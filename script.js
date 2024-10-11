@@ -1,16 +1,15 @@
 document.getElementById('toggle-theme').addEventListener('click', function() {
-    const body = document.body;
-    if (body.style.getPropertyValue('--bg-color') === '#333') {
-        body.style.setProperty('--bg-color', '#fff');
-        body.style.setProperty('--text-color', '#333');
-    } else {
-        body.style.setProperty('--bg-color', '#333');
-        body.style.setProperty('--text-color', '#ccc');
-    }
+    document.body.classList.toggle('dark-mode');
+    this.textContent = document.body.classList.contains('dark-mode') ? '🌜' : '🌞';
 });
 
 document.getElementById('login-btn').addEventListener('click', function() {
-    document.getElementById('login-form').style.display = 'block';
+    const loginForm = document.getElementById('login-form');
+    loginForm.style.opacity = "0";
+    setTimeout(() => {
+        loginForm.classList.toggle('hidden');
+        loginForm.style.opacity = "1";
+    }, 300);
 });
 
 function login() {
@@ -21,10 +20,10 @@ function login() {
         return;
     }
     if (username === 'admin' && password === '123') {
+        localStorage.setItem('user', username);
         alert('Login exitoso');
         // Implementar redirección
     } else {
         alert('Usuario o contraseña incorrectos');
     }
 }
-
