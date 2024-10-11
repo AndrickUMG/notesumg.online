@@ -3,37 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido a NoteSumg</title>
+    <title>NoteSumg Online</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>NoteSumg Online</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#services">Servicios</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="home">
-            <h2>Bienvenido a tu gestor de notas y recordatorios</h2>
-            <p>Organiza tu día con eficacia y sencillez.</p>
-        </section>
-        <section id="services">
-            <h2>Servicios</h2>
-            <p>Explora los servicios que ofrecemos para ayudarte a mantener tus tareas en orden.</p>
-        </section>
-        <section id="contact">
-            <h2>Contacto</h2>
-            <p>¿Tienes preguntas? No dudes en contactarnos.</p>
-        </section>
-    </main>
-    <footer>
-        <p>© 2024 NoteSumg.online - Todos los derechos reservados.</p>
-    </footer>
+    <div id="theme-toggle">Modo Nocturno: Off</div>
+    <div id="container">
+        <div class="input-wrapper">
+            <input type="text" placeholder="login" />
+        </div>
+        <div class="input-wrapper">
+            <input type="password" id="password_input" placeholder="password" />
+        </div>
+        <div class="input-wrapper">
+            <div id="blt_wrapper">
+                <div id="slider_blt"></div>
+            </div>
+        </div>
+        <div id="instruction">
+            slide to reveal password
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
+
