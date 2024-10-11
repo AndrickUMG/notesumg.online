@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido a NoteSumg Online</title>
+    <title>Notas UMG</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="theme-toggle" onclick="toggleTheme()">Modo Nocturno: Off</div>
-    <div class="container">
-        <form class="login-form">
-            <div class="input-wrapper">
-                <input type="text" placeholder="login" aria-label="login">
-            </div>
-            <div class="input-wrapper">
-                <input type="password" id="password_input" placeholder="password" aria-label="password">
-                <div class="slider-button" onmousedown="slideToReveal()">
-                    <div class="slider-thumb"></div>
-                </div>
-            </div>
-            <button type="submit">Iniciar sesión</button>
-        </form>
-    </div>
-
+    <header>
+        <h1>NOTAS UMG</h1>
+        <button id="toggle-theme">🌞/🌜</button>
+    </header>
+    <main>
+        <button id="login-btn">Iniciar Sesión</button>
+        <button id="signup-btn">Crear Usuario</button>
+        <div id="login-form" style="display: none;">
+            <input type="text" id="username" placeholder="Nombre de Usuario">
+            <input type="password" id="password" placeholder="Contraseña">
+            <button onclick="login()">Login</button>
+        </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
