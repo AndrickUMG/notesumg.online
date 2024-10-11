@@ -3,31 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoteSumg Online</title>
+    <title>Bienvenido a NoteSumg Online</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="theme-toggle">Modo Nocturno: Off</div>
-    <div id="container">
-        <div class="input-wrapper">
-            <input type="text" placeholder="login" />
-        </div>
-        <div class="input-wrapper">
-            <input type="password" id="password_input" placeholder="password" />
-        </div>
-        <div class="input-wrapper">
-            <div id="blt_wrapper">
-                <div id="slider_blt"></div>
+    <div id="theme-toggle" onclick="toggleTheme()">Modo Nocturno: Off</div>
+    <div class="container">
+        <form class="login-form">
+            <div class="input-wrapper">
+                <input type="text" placeholder="login" aria-label="login">
             </div>
-        </div>
-        <div id="instruction">
-            slide to reveal password
-        </div>
+            <div class="input-wrapper">
+                <input type="password" id="password_input" placeholder="password" aria-label="password">
+                <div class="slider-button" onmousedown="slideToReveal()">
+                    <div class="slider-thumb"></div>
+                </div>
+            </div>
+            <button type="submit">Iniciar sesión</button>
+        </form>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
-
