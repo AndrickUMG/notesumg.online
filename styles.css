@@ -1,7 +1,8 @@
 body {
-    background-color: white;
-    color: black;
-    font-family: Arial, sans-serif;
+    background-color: #cad5df;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #333;
+    font-size: 12px;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -17,54 +18,88 @@ header {
     display: none;
 }
 
-input[type="text"], input[type="password"] {
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 16px;
-    width: 180px;
+#container {
+    position: relative;
+    width: 650px;
+    height: 230px;
+    margin: 50px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#login-form {
-    display: flex;
-    flex-direction: column;
-    width: 220px;
+.input_wrapper {
     margin: 20px auto;
-    transition: opacity 0.3s;
+    width: 200px;
+    height: 66px;
+    border-radius: 30px;
+    position: relative;
+    background: linear-gradient(to bottom,  #aabfcd 0%,#eff3f6 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-button {
-    padding: 10px 20px;
+#blt_wrapper, input {
+    width: 184px;
+    height: 50px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #5f9424;
+    border-radius: 30px;
+}
+
+input {
+    background: rgba(255, 255, 255, 0.5);
+    outline: none;
+    border: 0;
+    padding: 3px 10px;
+    width: 164px;
+    height: 44px;
     font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%;
-}
-
-button:hover {
-    background-color: #ccc;
-}
-
-.dark-mode {
-    background-color: #333;
-    color: #fff;
-}
-
-#blt_wrapper {
-    width: 100%;
-    height: 20px;
-    background-color: #ccc;
-    cursor: pointer;
 }
 
 #slider_blt {
     width: 50px;
-    height: 100%;
-    background-color: #666;
-    transition: transform 0.3s ease;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-shadow: 3px 3px 10px #333;
+    background: linear-gradient(to bottom,  #fffafa 0%,#b4c0c9 100%);
+    cursor: pointer;
 }
 
-.input_wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#instruction {
+    background: #333;
+    width: 170px;
+    height: 29px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 12px;
+    color: #cad5df;
+}
+
+#toggle-theme {
+    font-size: 16px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background: linear-gradient(to right, #f9d423 0%, #ff4e50 100%);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#toggle-theme:hover {
+    background: linear-gradient to right, #ff4e50 0%, #f9d423 100%);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
