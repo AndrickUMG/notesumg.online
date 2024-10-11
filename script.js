@@ -12,6 +12,16 @@ document.getElementById('login-btn').addEventListener('click', function() {
     }, 300);
 });
 
+document.getElementById('blt_wrapper').addEventListener('mousedown', function() {
+    const passInput = document.getElementById('password_input');
+    passInput.type = 'text';
+});
+
+document.getElementById('blt_wrapper').addEventListener('mouseup', function() {
+    const passInput = document.getElementById('password_input');
+    passInput.type = 'password';
+});
+
 function login() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
