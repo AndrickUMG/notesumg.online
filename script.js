@@ -16,10 +16,15 @@ document.getElementById('login-btn').addEventListener('click', function() {
 function login() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
+    if (!username || !password) {
+        alert('Por favor, completa todos los campos.');
+        return;
+    }
     if (username === 'admin' && password === '123') {
         alert('Login exitoso');
-        // Redirigir a la página principal de la aplicación o manejar el login
+        // Implementar redirección
     } else {
-        alert('Credenciales incorrectas');
+        alert('Usuario o contraseña incorrectos');
     }
 }
+
