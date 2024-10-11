@@ -1,40 +1,32 @@
-.input-wrapper {
-    width: 280px;
-    height: 40px;
-    border-radius: 20px;
-    background: #f0f0f0;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color, #fff);
+    color: var(--text-color, #333);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 5px;
+    padding: 20px;
 }
 
-#slider_blt {
-    width: 40px;
-    height: 40px;
-    background-color: #5f9424;
-    border-radius: 50%;
-    position: absolute;
+#toggle-theme {
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
+    font-size: 24px;
+    background: none;
+    border: none;
 }
 
-#slider_blt:active {
-    background-color: #4a7c1f;
-}
-[data-theme="dark"] {
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-#theme-toggle {
-    cursor: pointer;
+input[type="text"], input[type="password"] {
+    margin: 10px 0;
     padding: 10px;
-    border-radius: 5px;
-    background-color: #ddd;
-    text-align: center;
-    width: 150px;
-    margin: 10px auto;
+    width: calc(100% - 22px);
+    display: block;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
 }
