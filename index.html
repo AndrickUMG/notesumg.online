@@ -14,8 +14,20 @@
         <button id="login-btn">Iniciar Sesión</button>
         <button id="signup-btn">Crear Usuario</button>
         <div id="login-form" class="hidden">
-            <input type="text" placeholder="Nombre de usuario" id="username">
-            <input type="password" placeholder="Contraseña" id="password">
+            <div class="input_wrapper">
+                <input type="text" placeholder="Nombre de usuario" id="username">
+            </div>
+            <div class="input_wrapper">
+                <input type="password" id="password_input" placeholder="Contraseña">
+            </div>
+            <div class="input_wrapper">
+                <div id="blt_wrapper">
+                    <div id="slider_blt"></div>
+                </div>
+            </div>
+            <div id="instruction">
+                Desliza para revelar la contraseña
+            </div>
             <button onclick="login()">Entrar</button>
         </div>
     </main>
