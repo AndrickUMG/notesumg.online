@@ -2,34 +2,29 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Notas UMG</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes UMG</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>NOTAS UMG</h1>
-        <button id="toggle-theme">🌞/🌜</button>
-    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Tareas</a></li>
+            <li><a href="#">Calendario</a></li>
+            <li><a href="#">Perfil</a></li>
+        </ul>
+    </nav>
     <main>
-        <button id="login-btn">Iniciar Sesión</button>
-        <button id="signup-btn">Crear Usuario</button>
-        <div id="login-form" class="hidden">
-            <div class="input_wrapper">
-                <input type="text" placeholder="Nombre de usuario" id="username">
-            </div>
-            <div class="input_wrapper">
-                <input type="password" id="password_input" placeholder="Contraseña">
-            </div>
-            <div class="input_wrapper">
-                <div id="blt_wrapper">
-                    <div id="slider_blt"></div>
-                </div>
-            </div>
-            <div id="instruction">
-                Desliza para revelar la contraseña
-            </div>
-            <button onclick="login()">Entrar</button>
-        </div>
+        <section id="login">
+            <h1>Iniciar Sesión</h1>
+            <form id="loginForm">
+                <input type="text" placeholder="Nombre de Usuario" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <a href="#">Crear Cuenta</a>
+        </section>
     </main>
     <script src="script.js"></script>
 </body>
