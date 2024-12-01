@@ -10,6 +10,18 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
+    overflow: hidden;
+}
+
+/* Video de fondo */
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Coloca el video detrás del contenido */
 }
 
 /* Sección del encabezado */
@@ -18,42 +30,57 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-image: url('tu-imagen-de-fondo.jpg'); /* Cambia por la URL de tu imagen */
-    background-size: cover;
-    background-position: center;
     height: 100vh;
     color: white;
     padding: 0 20px;
+    position: relative; /* Permite que el contenido esté sobre el video */
 }
 
 /* Contenedor central */
 .hero .container {
     max-width: 800px;
+    z-index: 1; /* Asegura que el texto esté sobre el video */
 }
 
 /* Títulos y párrafos */
 .hero h1 {
     font-size: 3rem;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Añade sombra para mejor visibilidad */
 }
 
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 /* Botón */
 .btn {
     display: inline-block;
     text-decoration: none;
-    background: #007bff;
+    background: rgba(0, 123, 255, 0.8);
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
     transition: background 0.3s;
     font-size: 1rem;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .btn:hover {
-    background: #0056b3;
+    background: rgba(0, 86, 179, 0.8);
+}
+
+/* Sección adicional */
+#contenido {
+    padding: 40px 20px;
+    background: #f4f4f4;
+    color: #333;
+    text-align: center;
+}
+
+#contenido .info {
+    max-width: 800px;
+    margin: 0 auto;
 }
