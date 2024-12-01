@@ -1,88 +1,59 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #e9eef5;
+/* Reset básico */
+body, h1, p, a {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-/* Navbar Styles */
-nav ul {
-    list-style: none;
-    background-color: #333;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
     margin: 0;
 }
 
-nav ul li {
-    display: inline;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px;
-}
-
-nav ul li a:hover {
-    background-color: #555;
-    border-radius: 5px;
-}
-
-/* Main Section Styles */
-main {
-    padding: 20px;
+/* Sección del encabezado */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    background-image: url('tu-imagen-de-fondo.jpg'); /* Cambia por la URL de tu imagen */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: white;
+    padding: 0 20px;
 }
 
-#login {
-    background-color: white;
-    padding: 20px;
-    margin: 100px auto;
-    width: 300px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+/* Contenedor central */
+.hero .container {
+    max-width: 800px;
 }
 
-#login h1 {
+/* Títulos y párrafos */
+.hero h1 {
+    font-size: 3rem;
     margin-bottom: 20px;
 }
 
-input {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    box-sizing: border-box;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
 }
 
-button {
-    padding: 10px;
-    width: 100%;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #555;
-}
-
-a {
-    display: block;
-    margin-top: 10px;
-    color: #333;
+/* Botón */
+.btn {
+    display: inline-block;
     text-decoration: none;
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s;
+    font-size: 1rem;
 }
 
-a:hover {
-    text-decoration: underline;
+.btn:hover {
+    background: #0056b3;
 }
