@@ -13,33 +13,25 @@ body {
     overflow: hidden;
 }
 
-/* Video de fondo */
-.bg-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1; /* Coloca el video detrás del contenido */
-}
-
-/* Sección del encabezado */
+/* Fondo de imagen */
 .hero {
+    background-image: url('parque.jpg'); /* Cambiar de video a imagen */
+    background-size: cover; /* Asegura que la imagen cubra toda el área */
+    background-position: center; /* Centra la imagen */
+    height: 100vh; /* La altura ocupa toda la pantalla */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 100vh;
     color: white;
     padding: 0 20px;
-    position: relative; /* Permite que el contenido esté sobre el video */
+    position: relative; /* Permite que el contenido esté sobre la imagen */
 }
 
 /* Contenedor central */
 .hero .container {
     max-width: 800px;
-    z-index: 1; /* Asegura que el texto esté sobre el video */
+    z-index: 1; /* Asegura que el texto esté sobre la imagen */
 }
 
 /* Títulos y párrafos */
