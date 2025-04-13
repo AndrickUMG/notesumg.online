@@ -21,6 +21,7 @@
         .hero {
             position: relative;
             height: 100vh;
+            width: 100%;
             overflow: hidden;
         }
 
@@ -29,31 +30,33 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
             z-index: -1;
+            object-fit: cover;
         }
 
-        /* Capa oscura para mejorar legibilidad del texto */
+        /* Capa oscura encima del video para mejorar legibilidad */
         .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.4);
             z-index: 0;
         }
 
-        /* Contenido sobre el video */
         .container {
             position: relative;
             z-index: 1;
             text-align: center;
-            color: white;
+            color: #fff;
             top: 50%;
             transform: translateY(-50%);
+            padding: 0 20px;
         }
 
         .container h1 {
@@ -84,7 +87,6 @@
             background-color: #0056b3;
         }
 
-        /* Sección adicional */
         #contenido {
             padding: 50px 20px;
             background-color: #f9f9f9;
@@ -108,7 +110,7 @@
     <header class="hero">
         <!-- Video de fondo -->
         <video autoplay muted loop playsinline>
-            <source src="videos/istockphoto-1902517058-640_adpp_is.mp4" type="video/mp4">
+            <source src="https://notesumg.online/videos/istockphoto-1902517058-640_adpp_is.mp4" type="video/mp4">
             Tu navegador no soporta la reproducción de videos.
         </video>
 
@@ -123,7 +125,7 @@
         </div>
     </header>
 
-    <!-- Contenido adicional -->
+    <!-- Sección Acerca de Nosotros -->
     <section id="contenido">
         <div class="info">
             <h2>Acerca de Nosotros</h2>
