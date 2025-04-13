@@ -7,10 +7,10 @@ body, h1, p, a {
 
 /* Estilo general */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    overflow: hidden;
+  background: url('istockphotemp4.jpg') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
 }
 
 /* Fondo de imagen */
