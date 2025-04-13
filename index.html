@@ -5,9 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Portada</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 <body>
     <header class="hero">
+        <!-- Video de fondo -->
+        <video autoplay muted loop playsinline>
+            <source src="videos/istockphoto-1902517058-640_adpp_is.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de videos.
+        </video>
+
         <!-- Contenido principal -->
         <div class="container">
             <h1>Bienvenido a DON SAMACO PARK</h1>
