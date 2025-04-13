@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Página de Portada</title>
-  <link rel="stylesheet" href="styles.css" />
 
   <style>
     * {
@@ -13,7 +12,7 @@
       box-sizing: border-box;
     }
 
-    body, html {
+    html, body {
       height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
@@ -23,18 +22,24 @@
       height: 100vh;
       width: 100%;
       overflow: hidden;
+      background-image: url('videos/parque.jpg'); /* fallback si el video no se carga */
+      background-size: cover;
+      background-position: center;
     }
 
     .hero video {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 50%;
+      left: 50%;
       min-width: 100%;
       min-height: 100%;
       width: auto;
       height: auto;
+      transform: translate(-50%, -50%);
       z-index: -1;
       object-fit: cover;
+      pointer-events: none;
+      background-color: #000;
     }
 
     .overlay {
@@ -43,7 +48,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.4);
       z-index: 0;
     }
 
@@ -125,6 +130,10 @@
       #contenido p {
         font-size: 1rem;
       }
+
+      .hero video {
+        display: block;
+      }
     }
 
     @media (max-width: 480px) {
@@ -152,14 +161,18 @@
   </style>
 </head>
 <body>
+
   <header class="hero">
+    <!-- Video de fondo -->
     <video autoplay muted loop playsinline>
       <source src="https://notesumg.online/videos/istockphoto-1902517058-640_adpp_is.mp4" type="video/mp4" />
       Tu navegador no soporta la reproducción de videos.
     </video>
 
+    <!-- Capa oscura -->
     <div class="overlay"></div>
 
+    <!-- Contenido principal -->
     <div class="container">
       <h1>Bienvenido a DON SAMACO PARK</h1>
       <p>Explora contenidos increíbles y descubre todo lo que tenemos para ti en nuestro gran parque.</p>
@@ -167,11 +180,13 @@
     </div>
   </header>
 
+  <!-- Sección Acerca de Nosotros -->
   <section id="contenido">
     <div class="info">
       <h2>Acerca de Nosotros</h2>
       <p>Este es un parque familiar con actividades para disfrutar con todo el mundo modernas atracciones.</p>
     </div>
   </section>
+
 </body>
 </html>
