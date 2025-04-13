@@ -1,136 +1,177 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Portada</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página de Portada</title>
+  <link rel="stylesheet" href="styles.css" />
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body, html {
-            height: 100%;
-            font-family: Arial, sans-serif;
-        }
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        .hero {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            overflow: hidden;
-        }
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+    }
 
-        /* Video de fondo */
-        .hero video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -1;
-            object-fit: cover;
-        }
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      object-fit: cover;
+    }
 
-        /* Capa oscura encima del video para mejorar legibilidad */
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            z-index: 0;
-        }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
 
-        .container {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            color: #fff;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 0 20px;
-        }
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: #fff;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0 20px;
+    }
 
-        .container h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-        }
+    .container h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
 
-        .container p {
-            font-size: 1.2rem;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-        }
+    .container p {
+      font-size: 1.2rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
 
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            font-size: 1rem;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            transition: background 0.3s;
-        }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background 0.3s;
+    }
 
-        .btn:hover {
-            background-color: #0056b3;
-        }
+    .btn:hover {
+      background-color: #0056b3;
+    }
 
-        #contenido {
-            padding: 50px 20px;
-            background-color: #f9f9f9;
-            color: #333;
-            text-align: center;
-        }
+    #contenido {
+      padding: 50px 20px;
+      background-color: #f9f9f9;
+      color: #333;
+      text-align: center;
+    }
 
-        #contenido h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
+    #contenido h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
 
-        #contenido p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-    </style>
+    #contenido p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* === Responsive Design === */
+    @media (max-width: 768px) {
+      .container h1 {
+        font-size: 2rem;
+      }
+
+      .container p {
+        font-size: 1rem;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+      }
+
+      #contenido h2 {
+        font-size: 1.5rem;
+      }
+
+      #contenido p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container h1 {
+        font-size: 1.5rem;
+      }
+
+      .container p {
+        font-size: 0.95rem;
+      }
+
+      .btn {
+        font-size: 0.85rem;
+        padding: 8px 18px;
+      }
+
+      #contenido h2 {
+        font-size: 1.3rem;
+      }
+
+      #contenido p {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header class="hero">
-        <!-- Video de fondo -->
-        <video autoplay muted loop playsinline>
-            <source src="https://notesumg.online/videos/istockphoto-1902517058-640_adpp_is.mp4" type="video/mp4">
-            Tu navegador no soporta la reproducción de videos.
-        </video>
+  <header class="hero">
+    <video autoplay muted loop playsinline>
+      <source src="https://notesumg.online/videos/istockphoto-1902517058-640_adpp_is.mp4" type="video/mp4" />
+      Tu navegador no soporta la reproducción de videos.
+    </video>
 
-        <!-- Capa oscura -->
-        <div class="overlay"></div>
+    <div class="overlay"></div>
 
-        <!-- Contenido principal -->
-        <div class="container">
-            <h1>Bienvenido a DON SAMACO PARK</h1>
-            <p>Explora contenidos increíbles y descubre todo lo que tenemos para ti en nuestro gran parque.</p>
-            <a href="#contenido" class="btn">Comenzar</a>
-        </div>
-    </header>
+    <div class="container">
+      <h1>Bienvenido a DON SAMACO PARK</h1>
+      <p>Explora contenidos increíbles y descubre todo lo que tenemos para ti en nuestro gran parque.</p>
+      <a href="#contenido" class="btn">Comenzar</a>
+    </div>
+  </header>
 
-    <!-- Sección Acerca de Nosotros -->
-    <section id="contenido">
-        <div class="info">
-            <h2>Acerca de Nosotros</h2>
-            <p>Este es un parque familiar con actividades para disfrutar con todo el mundo modernas atracciones.</p>
-        </div>
-    </section>
+  <section id="contenido">
+    <div class="info">
+      <h2>Acerca de Nosotros</h2>
+      <p>Este es un parque familiar con actividades para disfrutar con todo el mundo modernas atracciones.</p>
+    </div>
+  </section>
 </body>
 </html>
