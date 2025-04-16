@@ -8,9 +8,9 @@ body, h1, p, a {
 
 /* Estilo general */
 body {
-    background: #f0f0f0; /* Un fondo más neutro por defecto */
-    margin: 0;
-    padding: 0;
+    background: url('istockphotemp4.jpg') no-repeat center center fixed; /* ¡Asegúrate de que la ruta sea correcta! */
+    background-size: cover;
+    /* ... otros estilos del body ... */
 }
 
 /* Fondo de imagen */
