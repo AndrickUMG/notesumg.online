@@ -1,192 +1,246 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Página de Portada</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página de Portada de Don Samaco Park</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
 
-    html, body {
-      height: 100%;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+        h1, h2 {
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
 
-    .hero {
-      position: relative;
-      height: 100vh;
-      width: 100%;
-      overflow: hidden;
-      background-image: url('VIDEO/parque.jpg'); /* fallback si el video no se carga */
-      background-size: cover;
-      background-position: center;
-    }
+        p {
+            font-size: 1.2rem;
+            color: #eee;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
 
-    .hero video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      transform: translate(-50%, -50%);
-      z-index: -1;
-      object-fit: cover;
-      pointer-events: none;
-      background-color: #000;
-    }
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
 
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
-      z-index: 0;
-    }
+        /* Estilos del encabezado (hero) */
+        .hero {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-image: url('parque.jpg');
+        }
 
-    .container {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      color: #fff;
-      top: 50%;
-      transform: translateY(-50%);
-      padding: 0 20px;
-    }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
 
-    .container h1 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-    }
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 30px;
+        }
 
-    .container p {
-      font-size: 1.2rem;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-    }
+        .hero h1 {
+            font-size: 4rem;
+            animation: fadeIn 1s ease, pulse 2s infinite alternate;
+        }
 
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 1rem;
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      transition: background 0.3s;
-    }
+        .hero p {
+            font-size: 1.5rem;
+            animation: fadeIn 1s ease, slideIn 1s ease-out 0.5s forwards;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
 
-    .btn:hover {
-      background-color: #0056b3;
-    }
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 18px 35px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            margin-top: 40px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-weight: 600;
+            animation: fadeIn 1s ease, pulseButton 2s infinite alternate;
+        }
 
-    #contenido {
-      padding: 50px 20px;
-      background-color: #f9f9f9;
-      color: #333;
-      text-align: center;
-    }
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 7px 12px rgba(0, 0, 0, 0.4);
+        }
 
-    #contenido h2 {
-      font-size: 2rem;
-      margin-bottom: 15px;
-    }
+        /* Estilos de la sección de contenido */
+        #contenido {
+            padding: 100px 30px;
+            text-align: center;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    #contenido p {
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
+        #contenido h2 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            transition: color 0.3s ease;
+        }
 
-    /* === Responsive Design === */
-    @media (max-width: 768px) {
-      .container h1 {
-        font-size: 2rem;
-      }
+        #contenido h2:hover {
+            color: #007bff;
+        }
 
-      .container p {
-        font-size: 1rem;
-      }
+        #contenido p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            line-height: 1.9;
+            color: #555;
+            animation: fadeIn 1s ease, slideIn 1s ease-out 0.5s forwards;
+            opacity: 0;
+            transform: translateX(50px);
+        }
 
-      .btn {
-        font-size: 0.9rem;
-        padding: 10px 20px;
-      }
+        /* Estilos para dispositivos móviles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
 
-      #contenido h2 {
-        font-size: 1.5rem;
-      }
+            .hero p {
+                font-size: 1.4rem;
+            }
 
-      #contenido p {
-        font-size: 1rem;
-      }
+            .btn {
+                font-size: 1.1rem;
+                padding: 15px 30px;
+            }
 
-      .hero video {
-        display: block;
-      }
-    }
+            #contenido h2 {
+                font-size: 2.5rem;
+            }
 
-    @media (max-width: 480px) {
-      .container h1 {
-        font-size: 1.5rem;
-      }
+            #contenido p {
+                font-size: 1.1rem;
+            }
+        }
 
-      .container p {
-        font-size: 0.95rem;
-      }
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
 
-      .btn {
-        font-size: 0.85rem;
-        padding: 8px 18px;
-      }
+            .hero p {
+                font-size: 1.2rem;
+            }
 
-      #contenido h2 {
-        font-size: 1.3rem;
-      }
+            .btn {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
 
-      #contenido p {
-        font-size: 0.95rem;
-      }
-    }
-  </style>
+            #contenido h2 {
+                font-size: 2rem;
+            }
+
+            #contenido p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes pulseButton {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+    </style>
 </head>
 <body>
+    <header class="hero">
+        <div class="container">
+            <h1>Bienvenido a Don Samaco Park</h1>
+            <p>Explora contenidos increíbles y descubre todo lo que tenemos preparado para ti y tu familia en nuestro gran parque.</p>
+            <a href="#contenido" class="btn">Descubre la Aventura</a>
+        </div>
+    </header>
 
-  <header class="hero">
-    <!-- Video de fondo corregido -->
-    <video autoplay muted loop playsinline>
-      <source src="https://notesumg.online/VIDEO/3422578725-preview.mp4" type="video/mp4" />
-      Tu navegador no soporta la reproducción de videos.
-    </video>
-
-    <!-- Capa oscura -->
-    <div class="overlay"></div>
-
-    <!-- Contenido principal -->
-    <div class="container">
-      <h1>Bienvenido a DON SAMACO PARK</h1>
-      <p>Explora contenidos increíbles y descubre todo lo que tenemos para ti en nuestro gran parque.</p>
-      <a href="#contenido" class="btn">Comenzar</a>
-    </div>
-  </header>
-
-  <!-- Sección Acerca de Nosotros -->
-  <section id="contenido">
-    <div class="info">
-      <h2>Acerca de Nosotros</h2>
-      <p>Este es un parque familiar con actividades para disfrutar con todo el mundo modernas atracciones.</p>
-    </div>
-  </section>
-
+    <section id="contenido">
+        <div class="info">
+            <h2>Acerca de Nosotros</h2>
+            <p>
+                Don Samaco Park es un parque diseñado para crear recuerdos inolvidables para toda la familia.  Ofrecemos una variedad de atracciones y actividades modernas,
+                desde emocionantes montañas rusas hasta espacios tranquilos para relajarse y disfrutar de la naturaleza. Nuestro objetivo es proporcionar un ambiente seguro
+                y divertido donde personas de todas las edades puedan disfrutar juntas. ¡Ven y descubre la magia de Don Samaco Park!
+            </p>
+        </div>
+    </section>
 </body>
 </html>
