@@ -229,26 +229,26 @@
             color: #333;
         }
 
-        .hospedaje-section { /* Cambiado el nombre de la clase */
+        .hospedaje-section {
             padding: 60px 20px;
             text-align: center;
-            background-color: #e0f7fa; /* Celeste muy claro */
+            background-color: #e0f7fa;
         }
 
-        .hospedaje-section h2 { /* Cambiado el nombre de la clase */
+        .hospedaje-section h2 {
             font-size: 2.5rem;
             margin-bottom: 40px;
             color: #00549f;
         }
 
-        .hospedaje-grid { /* Nueva clase para el grid de hospedaje */
+        .hospedaje-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajustado el minmax */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 20px;
         }
 
-        .hospedaje-card { /* Nueva clase para la tarjeta de hospedaje */
+        .hospedaje-card {
             background-color: white;
             border-radius: 10px;
             padding: 20px;
@@ -259,26 +259,26 @@
             justify-content: space-between;
         }
 
-        .hospedaje-card:hover { /* Nueva clase para el hover de la tarjeta de hospedaje */
+        .hospedaje-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
 
-        .hospedaje-card img { /* Nueva clase para la imagen de hospedaje */
+        .hospedaje-card img {
             width: 100%;
             border-radius: 8px;
             margin-bottom: 15px;
-            height: 250px; /* Altura fija para las imágenes de hospedaje */
+            height: 250px;
             object-fit: cover;
         }
 
-        .hospedaje-card h3 { /* Nueva clase para el título del hospedaje */
+        .hospedaje-card h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
             color: #00549f;
         }
 
-        .hospedaje-card p { /* Nueva clase para la descripción del hospedaje */
+        .hospedaje-card p {
             font-size: 1.1rem;
             line-height: 1.5;
             color: #333;
@@ -339,6 +339,69 @@
             color: #333;
         }
 
+        .clima-section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #e0f7fa;
+        }
+
+        .clima-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #00549f;
+        }
+
+        .clima-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            max-width: 400px;
+        }
+
+        .clima-actual {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .clima-actual img {
+            width: 80px;
+            margin-right: 20px;
+        }
+
+        .clima-actual h3 {
+            font-size: 2rem;
+            color: #00549f;
+            margin-bottom: 0;
+        }
+
+        .clima-pronostico {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .clima-pronostico div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .clima-pronostico img {
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        .clima-pronostico span {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
         footer {
             background-color: #00b0ff;
             color: white;
@@ -374,6 +437,9 @@
             .hero-section {
                 height: 90vh;
             }
+            .clima-info {
+                width: 95%;
+            }
         }
     </style>
 </head>
@@ -389,6 +455,7 @@
                 <li><a href="#hospedaje">Hospedaje</a></li>
                 <li><a href="#tienda">Tienda</a></li>
                 <li><a href="#tickets">Tickets</a></li>
+                <li><a href="#clima">Clima</a></li>
             </ul>
         </nav>
     </header>
@@ -414,12 +481,16 @@
                     <p>Un clásico para toda la familia, ¡ven a dar un paseo!</p>
                 </div>
                 <div class="atraccion-card">
-                    <img src="atraccion3.jpg" alt="Río Bravo">  <h3>Río Bravo</h3>
-                    <p>Refréscate en esta aventura acuática, ¡diversión garantizada!</p>
+                    <img src="atraccion3.jpg" alt="Columpio Volador">  <h3>Columpio Volador</h3>
+                    <p>Siente la emoción de volar por los aires.</p>
                 </div>
-                 <div class="atraccion-card">
-                    <img src="atraccion4.jpg" alt="Mundo Jurásico">  <h3>Mundo Jurásico</h3>
-                    <p>Ven y conoce a los dinosaurios.</p>
+                <div class="atraccion-card">
+                    <img src="atraccion4.jpg" alt="Barco">  <h3>Barco Pirata</h3>
+                    <p>Navega en esta aventura.</p>
+                </div>
+                <div class="atraccion-card">
+                    <img src="atraccion5.jpg" alt="Rueda de la Fortuna">  <h3>Rueda de la Fortuna</h3>
+                    <p>Disfruta de las vistas panorámicas del parque.</p>
                 </div>
             </div>
         </section>
@@ -445,14 +516,6 @@
                     <img src="hotel1.jpg" alt="Hotel Parque 1"> <h3>Hotel Don Samaco Plaza</h3>
                     <p>El hotel de lujo del parque, con todas las comodidades para una estancia inolvidable.</p>
                 </div>
-                <div class="hospedaje-card">
-                    <img src="hotel2.jpg" alt="Hotel Parque 2">  <h3>Cabañas del Bosque Encantado</h3>
-                    <p>Cabañas rústicas y acogedoras, rodeadas de naturaleza.</p>
-                </div>
-                <div class="hospedaje-card">
-                    <img src="hotel3.jpg" alt="Hotel Parque 3">  <h3>Hostal La Aventura</h3>
-                    <p>Opción económica y divertida para grupos y familias.</p>
-                </div>
             </div>
         </section>
 
@@ -474,6 +537,29 @@
                     <img src="tienda3.jpg" alt="Tienda de Dulces">  <h3>Dulces y Golosinas</h3>
                     <p>Disfruta de una variedad de dulces y golosinas temáticas.</p>
                     <p><strong>Demostración:</strong> Viernes de 16:00 a 18:00.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="clima" class="clima-section">
+            <h2>Clima en Don Samaco Park</h2>
+            <div class="clima-info">
+                <div class="clima-actual">
+                    <img src="clima-soleado.png" alt="Clima Soleado">  <div>
+                        <h3>25°C</h3>
+                        <p>Soleado</p>
+                    </div>
+                </div>
+                <div class="clima-pronostico">
+                    <div>
+                        <img src="clima-nublado.png" alt="Clima Nublado">  <span>Mañana: 22°C, Nublado</span>
+                    </div>
+                    <div>
+                        <img src="clima-lluvioso.png" alt="Clima Lluvioso">  <span>Tarde: 20°C, Lluvioso</span>
+                    </div>
+                    <div>
+                        <img src="clima-soleado.png" alt="Clima Soleado">  <span>Sábado: 24°C, Soleado</span>
+                    </div>
                 </div>
             </div>
         </section>
