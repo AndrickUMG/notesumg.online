@@ -172,13 +172,6 @@
             color: #00549f;
         }
 
-        .atracciones-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
         .atraccion-card {
             background-color: white;
             border-radius: 10px;
@@ -188,6 +181,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            height: 100%;
         }
 
         .atraccion-card:hover {
@@ -202,307 +196,297 @@
             height: 200px;
             object-fit: cover;
         }
-
+        
         .atraccion-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
             color: #00549f;
+            margin-bottom: 10px;
         }
-
+        
         .atraccion-card p {
-            font-size: 1.1rem;
-            line-height: 1.5;
             color: #333;
-        }
-
-        .eventos-section {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #e0f7fa; /* Celeste muy claro */
-        }
-
-        .eventos-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #00549f;
-        }
-
-        .eventos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .evento-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .evento-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .evento-card img {
-            width: 100%;
-            border-radius: 8px;
             margin-bottom: 15px;
-            height: 200px;
-            object-fit: cover;
         }
-
-        .evento-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #00549f;
-        }
-
-        .evento-card p {
-            font-size: 1.1rem;
-            line-height: 1.5;
-            color: #333;
-        }
-
-        .hospedaje-section {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #e0f7fa;
-        }
-
-        .hospedaje-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #00549f;
-        }
-
-        .hospedaje-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .hospedaje-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .hospedaje-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .hospedaje-card img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .hospedaje-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #00549f;
-        }
-
-        .hospedaje-card p {
-            font-size: 1.1rem;
-            line-height: 1.5;
-            color: #333;
-        }
-
-        .tienda-section {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #e0f7fa;
-        }
-
-        .tienda-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #00549f;
-        }
-
-        .tienda-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .tienda-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .tienda-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .tienda-card img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .tienda-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #00549f;
-        }
-
-        .tienda-card p {
-            font-size: 1.1rem;
-            line-height: 1.5;
-            color: #333;
-        }
-
-        .clima-section {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #e0f7fa;
-        }
-
-        .clima-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #00549f;
-        }
-
-        .clima-info {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 0 auto;
-            max-width: 400px;
-        }
-
-        .clima-actual {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .clima-actual img {
-            width: 80px;
-            margin-right: 20px;
-        }
-
-        .clima-actual h3 {
-            font-size: 2rem;
-            color: #00549f;
-            margin-bottom: 0;
-        }
-
-        .clima-pronostico {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .clima-pronostico div {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .clima-pronostico img {
-            width: 50px;
-            margin-right: 10px;
-        }
-
-        .clima-pronostico span {
-            font-size: 1.1rem;
-            color: #333;
-        }
-
-        footer {
+        
+        .atraccion-card .btn {
             background-color: #00b0ff;
             color: white;
-            text-align: center;
-            padding: 20px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
-
-        /* Responsive */
+        
+        .atraccion-card .btn:hover {
+            background-color: #0077b6;
+        }
+        
+        /* Estilos para la sección de precios */
+        .precios-section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: white;
+        }
+        
+        .precios-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #00549f;
+        }
+        
+        .precio-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .precio-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .precio-card.destacado {
+            background-color: #e0f7fa;
+            border: 2px solid #00b0ff;
+            position: relative;
+        }
+        
+        .precio-card.destacado::before {
+            content: "Más Popular";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #00b0ff;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .precio-card h3 {
+            color: #00549f;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .precio-card .precio {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00b0ff;
+            margin-bottom: 20px;
+        }
+        
+        .precio-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .precio-card ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .precio-card ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00b0ff;
+            font-weight: bold;
+        }
+        
+        .precio-card .btn {
+            background-color: #00b0ff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .precio-card .btn:hover {
+            background-color: #0077b6;
+        }
+        
+        /* Estilos para el footer */
+        footer {
+            background-color: #00549f;
+            color: white;
+            padding: 50px 20px 20px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #00b0ff;
+        }
+        
+        .footer-section p, .footer-section li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #00b0ff;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: #00b0ff;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Estilos para el carrusel */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 20px;
+            padding: 0 20px;
+        }
+        
+        .carousel-item {
+            min-width: 280px;
+            flex: 0 0 auto;
+            width: calc(33.333% - 20px);
+        }
+        
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
+        .carousel-button {
+            background-color: #00b0ff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .carousel-button:hover {
+            background-color: #0077b6;
+        }
+        
+        /* Media queries para responsividad */
         @media (max-width: 768px) {
-            header nav ul {
-                flex-direction: column;
-                display: none; /* Oculta el menú en pantallas pequeñas por defecto */
+            header {
+                padding: 5px 10px;
             }
+            
+            header .logo img {
+                height: 35px;
+            }
+            
+            header .logo h1 {
+                font-size: 1.2rem;
+            }
+            
             header nav {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                width: 100%;
-                justify-content: space-between;
+                display: none;
             }
-            header nav ul.nav-open{
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                right: 0;
-                background-color: #00b0ff;
-                width: 100%;
-                text-align: center;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-                z-index: 100;
+            
+            .menu-toggle {
+                display: block;
             }
-            header nav ul li {
-                margin-left: 0;
-                margin-top: 10px;
-            }
+            
             .hero-section h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
+            
             .hero-section p {
                 font-size: 1rem;
             }
-            .menu-toggle { /* Muestra el botón de menú en pantallas pequeñas */
-                display: block;
+            
+            .atracciones-section h2, .precios-section h2 {
+                font-size: 2rem;
+            }
+            
+            .carousel-item {
+                min-width: 260px;
+                width: 85%;
             }
         }
-
+        
         @media (max-width: 480px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-            header .logo {
-                margin-bottom: 10px;
-            }
-            .hero-section {
-                height: 90vh;
-            }
-            .clima-info {
-                width: 95%;
+            .carousel-item {
+                width: 100%;
             }
         }
     </style>
@@ -510,143 +494,295 @@
 <body>
     <header>
         <div class="logo">
-            <img src="logo.png" alt="Logo del Parque"> <h1>Don Samaco Park</h1>
+            <img src="logo.png" alt="Logo Parque Don Samaco">
+            <h1>Don Samaco</h1>
         </div>
+        <button class="menu-toggle">☰</button>
         <nav>
-            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
-                ☰
-            </button>
-            <ul id="nav-list">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#atracciones">Atracciones</a></li>
-                <li><a href="#eventos">Eventos</a></li>
-                <li><a href="#hospedaje">Hospedaje</a></li>
-                <li><a href="#tienda">Tienda</a></li>
-                <li><a href="#tickets">Tickets</a></li>
-                <li><a href="#clima">Clima</a></li>
+                <li><a href="#precios">Precios</a></li>
+                <li><a href="#horarios">Horarios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section class="hero-section">
-            <div class="container">
-                <h1>Bienvenido a Don Samaco Park</h1>
-                <p>El mejor lugar para la diversión y la aventura familiar. ¡Descubre nuestras increíbles atracciones, eventos, opciones de hospedaje y tiendas!</p>
-                <a href="#atracciones" class="cta-button">Descubre la Aventura</a>
-            </div>
-        </section>
+    <section id="inicio" class="hero-section">
+        <div class="container">
+            <h1>¡Bienvenidos al Parque de Diversiones Don Samaco!</h1>
+            <p>Vive la experiencia más emocionante con nuestras increíbles atracciones para toda la familia.</p>
+            <button class="cta-button">¡Compra tus entradas ahora!</button>
+        </div>
+    </section>
 
-        <section id="atracciones" class="atracciones-section">
-            <h2>Nuestras Atracciones</h2>
-            <div class="atracciones-grid">
-                <div class="atraccion-card">
-                    <img src="atraccion1.jpg" alt="Montaña Rusa"> <h3>Montaña Rusa El Tornado</h3>
-                    <p>La atracción más emocionante del parque, ¡adrenalina al máximo!</p>
-                </div>
-                <div class="atraccion-card">
-                    <img src="atraccion2.jpg" alt="Carrusel">  <h3>Carrusel Mágico</h3>
-                    <p>Un clásico para toda la familia, ¡ven a dar un paseo!</p>
-                </div>
-                <div class="atraccion-card">
-                    <img src="atraccion3.jpg" alt="Columpio Volador">  <h3>Columpio Volador</h3>
-                    <p>Siente la emoción de volar por los aires.</p>
-                </div>
-                <div class="atraccion-card">
-                    <img src="atraccion4.jpg" alt="Barco">  <h3>Barco Pirata</h3>
-                    <p>Navega en esta aventura.</p>
-                </div>
-                <div class="atraccion-card">
-                    <img src="atraccion5.jpg" alt="Rueda de la Fortuna">  <h3>Rueda de la Fortuna</h3>
-                    <p>Disfruta de las vistas panorámicas del parque.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="eventos" class="eventos-section">
-            <h2>Próximos Eventos</h2>
-             <div class="eventos-grid">
-                <div class="evento-card">
-                    <img src="evento1.jpg" alt="Evento de Música"> <h3>Concierto de Verano</h3>
-                    <p>Disfruta de la mejor música en vivo con artistas invitados.</p>
-                </div>
-                <div class="evento-card">
-                    <img src="evento2.jpg" alt="Desfile de Halloween">  <h3>Noche de Brujas</h3>
-                    <p>Celebra Halloween con nuestro desfile de disfraces y sorpresas.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="hospedaje" class="hospedaje-section">
-            <h2>Opciones de Hospedaje</h2>
-            <div class="hospedaje-grid">
-                <div class="hospedaje-card">
-                    <img src="hotel1.jpg" alt="Hotel Parque 1"> <h3>Hotel Don Samaco Plaza</h3>
-                    <p>El hotel de lujo del parque, con todas las comodidades para una estancia inolvidable.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="tienda" class="tienda-section">
-            <h2>Tienda de Recuerdos</h2>
-            <p>Visita nuestras tiendas para encontrar el recuerdo perfecto de tu aventura en Don Samaco Park. ¡Demostraciones de productos disponibles!</p>
-            <div class="tienda-grid">
-                <div class="tienda-card">
-                    <img src="tienda1.jpg" alt="Tienda de Peluches"> <h3>Peluches y Juguetes</h3>
-                    <p>Encuentra los peluches de tus personajes favoritos y juguetes para todas las edades.</p>
-                    <p><strong>Demostración:</strong> Sábados de 10:00 a 12:00.</p>
-                </div>
-                <div class="tienda-card">
-                    <img src="tienda2.jpg" alt="Tienda de Ropa">  <h3>Ropa y Accesorios</h3>
-                    <p>Camisetas, gorras, y accesorios exclusivos del parque.</p>
-                     <p><strong>Demostración:</strong> Domingos de 14:00 a 16:00.</p>
-                </div>
-                <div class="tienda-card">
-                    <img src="tienda3.jpg" alt="Tienda de Dulces">  <h3>Dulces y Golosinas</h3>
-                    <p>Disfruta de una variedad de dulces y golosinas temáticas.</p>
-                    <p><strong>Demostración:</strong> Viernes de 16:00 a 18:00.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="clima" class="clima-section">
-            <h2>Clima en Don Samaco Park</h2>
-            <div class="clima-info">
-                <div class="clima-actual">
-                    <img src="clima-soleado.png" alt="Clima Soleado">  <div>
-                        <h3>25°C</h3>
-                        <p>Soleado</p>
+    <section id="atracciones" class="atracciones-section">
+        <h2>Nuestras Atracciones</h2>
+        <div class="carousel-container">
+            <div class="carousel-track" id="atracciones-carousel">
+                <div class="carousel-item">
+                    <div class="atraccion-card">
+                        <img src="montaña_rusa.jpg" alt="Montaña Rusa">
+                        <h3>Montaña Rusa Extrema</h3>
+                        <p>¡Prepárate para la adrenalina! Nuestra montaña rusa alcanza velocidades de hasta 120 km/h con giros de 360 grados.</p>
+                        <button class="btn">Más información</button>
                     </div>
                 </div>
-                <div class="clima-pronostico">
-                    <div>
-                        <img src="clima-nublado.png" alt="Clima Nublado">  <span>Mañana: 22°C, Nublado</span>
+                <div class="carousel-item">
+                    <div class="atraccion-card">
+                        <img src="rueda_fortuna.jpg" alt="Rueda de la Fortuna">
+                        <h3>Rueda de la Fortuna</h3>
+                        <p>Disfruta de las mejores vistas de la ciudad desde nuestra rueda gigante de 60 metros de altura.</p>
+                        <button class="btn">Más información</button>
                     </div>
-                    <div>
-                        <img src="clima-lluvioso.png" alt="Clima Lluvioso">  <span>Tarde: 20°C, Lluvioso</span>
+                </div>
+                <div class="carousel-item">
+                    <div class="atraccion-card">
+                        <img src="splash.jpg" alt="Splash Water">
+                        <h3>Splash Water</h3>
+                        <p>Refréscate en nuestras atracciones acuáticas con toboganes y piscinas para todas las edades.</p>
+                        <button class="btn">Más información</button>
                     </div>
-                    <div>
-                        <img src="clima-soleado.png" alt="Clima Soleado">  <span>Sábado: 24°C, Soleado</span>
+                </div>
+                <div class="carousel-item">
+                    <div class="atraccion-card">
+                        <img src="casa_terror.jpg" alt="Casa del Terror">
+                        <h3>Casa del Terror</h3>
+                        <p>¿Te atreves a entrar? Una experiencia escalofriante que pondrá a prueba tu valentía.</p>
+                        <button class="btn">Más información</button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="atraccion-card">
+                        <img src="carrusel.jpg" alt="Carrusel Mágico">
+                        <h3>Carrusel Mágico</h3>
+                        <p>Un clásico para toda la familia. Disfruta de un paseo en nuestro hermoso carrusel con figuras talladas a mano.</p>
+                        <button class="btn">Más información</button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="atraccion-card">
+                        <img src="montaña_agua.jpg" alt="Montaña de Agua">
+                        <h3>Montaña de Agua</h3>
+                        <p>Prepárate para mojarte en esta emocionante atracción con caídas de hasta 30 metros de altura.</p>
+                        <button class="btn">Más información</button>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="carousel-nav">
+                <button class="carousel-button prev-button" onclick="moveCarousel('atracciones-carousel', -1)">&#10094;</button>
+                <button class="carousel-button next-button" onclick="moveCarousel('atracciones-carousel', 1)">&#10095;</button>
+            </div>
+        </div>
+    </section>
 
-        <section id="tickets" class="tickets-section">
-            <h2>Tickets</h2>
-            <p>Adquiere tus tickets y pases de temporada para disfrutar de todas las emociones que Don Samaco Park tiene para ti.</p>
-        </section>
-    </main>
+    <section id="precios" class="precios-section">
+        <h2>Precios y Paquetes</h2>
+        <div class="carousel-container">
+            <div class="carousel-track" id="precios-carousel">
+                <div class="carousel-item">
+                    <div class="precio-card">
+                        <h3>Entrada General</h3>
+                        <p class="precio">$25.000</p>
+                        <ul>
+                            <li>Acceso a todas las atracciones</li>
+                            <li>1 Snack gratis</li>
+                            <li>Válido por 1 día</li>
+                        </ul>
+                        <button class="btn">Comprar</button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="precio-card destacado">
+                        <h3>Pase Familiar</h3>
+                        <p class="precio">$80.000</p>
+                        <ul>
+                            <li>Acceso para 4 personas</li>
+                            <li>4 Snacks gratis</li>
+                            <li>20% descuento en restaurantes</li>
+                            <li>Válido por 1 día</li>
+                        </ul>
+                        <button class="btn">Comprar</button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="precio-card">
+                        <h3>Pase Anual</h3>
+                        <p class="precio">$150.000</p>
+                        <ul>
+                            <li>Acceso ilimitado por 1 año</li>
+                            <li>30% descuento en restaurantes</li>
+                            <li>Acceso prioritario a atracciones</li>
+                            <li>Invitado gratis 1 vez al mes</li>
+                        </ul>
+                        <button class="btn">Comprar</button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="precio-card">
+                        <h3>Pase VIP</h3>
+                        <p class="precio">$40.000</p>
+                        <ul>
+                            <li>Acceso a todas las atracciones</li>
+                            <li>Acceso prioritario (sin filas)</li>
+                            <li>2 Snacks gratis</li>
+                            <li>Válido por 1 día</li>
+                        </ul>
+                        <button class="btn">Comprar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-nav">
+                <button class="carousel-button prev-button" onclick="moveCarousel('precios-carousel', -1)">&#10094;</button>
+                <button class="carousel-button next-button" onclick="moveCarousel('precios-carousel', 1)">&#10095;</button>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-        <p>© 2025 Don Samaco Park. Todos los derechos reservados.</p>
+    <section id="horarios" class="horarios-section">
+        <div class="container">
+            <h2>Horarios de Atención</h2>
+            <div class="horarios-info">
+                <div class="horario-item">
+                    <h3>Temporada Regular</h3>
+                    <p><strong>Lunes a Viernes:</strong> 10:00 - 20:00</p>
+                    <p><strong>Sábados y Domingos:</strong> 09:00 - 22:00</p>
+                </div>
+                <div class="horario-item">
+                    <h3>Temporada Alta</h3>
+                    <p><strong>Todos los días:</strong> 09:00 - 23:00</p>
+                </div>
+                <div class="horario-item">
+                    <h3>Feriados</h3>
+                    <p><strong>Horario especial:</strong> 09:00 - 00:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Sobre Nosotros</h3>
+                <p>Parque de Diversiones Don Samaco es el lugar perfecto para disfrutar con familia y amigos. Ofrecemos experiencias inolvidables desde 1995.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Av. Principal #123, Ciudad</p>
+                <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                <p><i class="fas fa-envelope"></i> info@donsamaco.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#atracciones">Atracciones</a></li>
+                    <li><a href="#precios">Precios</a></li>
+                    <li><a href="#horarios">Horarios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Suscríbete</h3>
+                <p>Recibe noticias y promociones especiales</p>
+                <form>
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Parque de Diversiones Don Samaco. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
+    <!-- Agregar Font Awesome para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const navList = document.getElementById('nav-list');
-
-        menuToggle.addEventListener('click', () => {
-            navList.classList.toggle('nav-open');
+        // Script para el menú móvil
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('nav-open');
+        });
+        
+        // Script para el carrusel
+        function moveCarousel(carouselId, direction) {
+            const track = document.getElementById(carouselId);
+            const items = track.querySelectorAll('.carousel-item');
+            const itemWidth = items[0].offsetWidth + 20; // Ancho del item + gap
+            
+            // Obtener la posición actual
+            const currentPosition = parseInt(track.style.transform.replace('translateX(', '').replace('px)', '') || 0);
+            
+            // Calcular nueva posición
+            let newPosition = currentPosition + (direction * itemWidth);
+            
+            // Limitar el desplazamiento
+            const maxScroll = -(items.length * itemWidth - track.parentElement.offsetWidth + 40);
+            if (newPosition < maxScroll) newPosition = maxScroll;
+            if (newPosition > 0) newPosition = 0;
+            
+            // Aplicar la transformación
+            track.style.transform = `translateX(${newPosition}px)`;
+        }
+        
+        // Inicializar carruseles para dispositivos táctiles
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousels = document.querySelectorAll('.carousel-track');
+            
+            carousels.forEach(carousel => {
+                let startX, startScrollLeft, isDragging = false;
+                
+                carousel.addEventListener('mousedown', function(e) {
+                    isDragging = true;
+                    startX = e.pageX;
+                    startScrollLeft = parseInt(carousel.style.transform.replace('translateX(', '').replace('px)', '') || 0);
+                    carousel.style.cursor = 'grabbing';
+                });
+                
+                carousel.addEventListener('mousemove', function(e) {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    const x = e.pageX;
+                    const walk = (x - startX);
+                    carousel.style.transform = `translateX(${startScrollLeft + walk}px)`;
+                });
+                
+                carousel.addEventListener('mouseup', function() {
+                    isDragging = false;
+                    carousel.style.cursor = 'grab';
+                });
+                
+                carousel.addEventListener('mouseleave', function() {
+                    isDragging = false;
+                    carousel.style.cursor = 'grab';
+                });
+                
+                // Soporte para dispositivos táctiles
+                carousel.addEventListener('touchstart', function(e) {
+                    isDragging = true;
+                    startX = e.touches[0].pageX;
+                    startScrollLeft = parseInt(carousel.style.transform.replace('translateX(', '').replace('px)', '') || 0);
+                }, { passive: true });
+                
+                carousel.addEventListener('touchmove', function(e) {
+                    if (!isDragging) return;
+                    const x = e.touches[0].pageX;
+                    const walk = (x - startX);
+                    carousel.style.transform = `translateX(${startScrollLeft + walk}px)`;
+                }, { passive: true });
+                
+                carousel.addEventListener('touchend', function() {
+                    isDragging = false;
+                });
+            });
         });
     </script>
 </body>
