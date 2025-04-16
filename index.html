@@ -1,653 +1,196 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parque de Diversiones Don Samaco</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Estilos generales */
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #e0f7fa; /* Celeste muy claro */
-        }
-
-        header {
-            background-color: #00b0ff; /* Celeste más intenso */
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        header .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        header .logo img {
-            height: 50px;
-            margin-right: 10px;
-        }
-
-        header nav {
-            display: flex;
-            align-items: center; /* Centra verticalmente los elementos del nav */
-        }
-
-        header nav ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-
-        header nav ul li {
-            margin-left: 20px;
-        }
-
-        header nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        header nav ul li a:hover {
-            color: #0077b6; /* Un tono más oscuro de celeste al pasar el ratón */
-        }
-
-        .menu-toggle { /* Nuevo estilo para el botón de menú en মোবাইল */
-            display: none; /* Oculto por defecto en pantallas grandes */
-            background-color: transparent;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0;
-            margin-left: 10px; /* Espacio a la izquierda del botón */
-        }
-
-        .menu-toggle:focus {
-            outline: none; /* Elimina el borde de enfoque predeterminado */
-        }
-
-        .nav-open { /* Clase que se agrega al nav cuando el menú está abierto */
-            display: flex !important;
-            flex-direction: column;
-            position: absolute;
-            top: 100%; /* Se muestra debajo del header */
-            right: 0;
-            background-color: #00b0ff; /* El mismo color del header */
-            width: 100%; /* Ancho completo */
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            z-index: 100; /* Asegura que el menú esté por encima de otros elementos */
-        }
-
-        .nav-open ul {
-            flex-direction: column;
-        }
-
-        .nav-open ul li {
-            margin: 10px 0;
-        }
-
-        .hero-section {
-            background-image: url('parque_atracciones.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding: 20px;
-            position: relative;
-        }
-
-        .hero-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 176, 255, 0.4); /* Capa celeste semi-transparente */
-            z-index: 1;
-        }
-
-        .hero-section .container {
-            z-index: 2;
-            max-width: 800px;
-        }
-
-        .hero-section h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .hero-section p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
-
-        .cta-button {
-            background-color: #ffdb58;
-            color: #00549f;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .cta-button:hover {
-            background-color: #f5c617; /* Un tono más oscuro de amarillo al pasar el ratón */
-            transform: translateY(-2px);
-        }
-
-        .atracciones-section {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #e0f7fa; /* Celeste muy claro */
-        }
-
-        .atracciones-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #00549f;
-        }
-
-        .atracciones-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .atraccion-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .atraccion-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .atraccion-card img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .atraccion-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #00549f;
-        }
-
-        .atraccion-card p {
-            font-size: 1.1rem;
-            line-height: 1.5;
-            color: #333;
-        }
-
-        .eventos-section {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #e0f7fa; /* Celeste muy claro */
-        }
-
-        .eventos-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #00549f;
-        }
-
-        .eventos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .evento-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .evento-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .evento-card img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .evento-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #00549f;
-        }
-
-        .evento-card p {
-            font-size: 1.1rem;
-            line-height: 1.5;
-            color: #333;
-        }
-
-        .hospedaje-section {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #e0f7fa;
-        }
-
-        .hospedaje-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #00549f;
-        }
-
-        .hospedaje-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .hospedaje-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .hospedaje-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .hospedaje-card img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .hospedaje-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #00549f;
-        }
-
-        .hospedaje-card p {
-            font-size: 1.1rem;
-            line-height: 1.5;
-            color: #333;
-        }
-
-        .tienda-section {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #e0f7fa;
-        }
-
-        .tienda-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #00549f;
-        }
-
-        .tienda-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .tienda-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .tienda-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .tienda-card img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .tienda-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #00549f;
-        }
-
-        .tienda-card p {
-            font-size: 1.1rem;
-            line-height: 1.5;
-            color: #333;
-        }
-
-        .clima-section {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #e0f7fa;
-        }
-
-        .clima-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #00549f;
-        }
-
-        .clima-info {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 0 auto;
-            max-width: 400px;
-        }
-
-        .clima-actual {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .clima-actual img {
-            width: 80px;
-            margin-right: 20px;
-        }
-
-        .clima-actual h3 {
-            font-size: 2rem;
-            color: #00549f;
-            margin-bottom: 0;
-        }
-
-        .clima-pronostico {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .clima-pronostico div {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .clima-pronostico img {
-            width: 50px;
-            margin-right: 10px;
-        }
-
-        .clima-pronostico span {
-            font-size: 1.1rem;
-            color: #333;
-        }
-
-        footer {
-            background-color: #00b0ff;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            header nav ul {
-                flex-direction: column;
-                display: none; /* Oculta el menú en pantallas pequeñas por defecto */
-            }
-            header nav {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                width: 100%;
-                justify-content: space-between;
-            }
-            header nav ul.nav-open{
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                right: 0;
-                background-color: #00b0ff;
-                width: 100%;
-                text-align: center;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-                z-index: 100;
-            }
-            header nav ul li {
-                margin-left: 0;
-                margin-top: 10px;
-            }
-            .hero-section h1 {
-                font-size: 2.5rem;
-            }
-            .hero-section p {
-                font-size: 1rem;
-            }
-            .menu-toggle { /* Muestra el botón de menú en pantallas pequeñas */
-                display: block;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-            header .logo {
-                margin-bottom: 10px;
-            }
-            .hero-section {
-                height: 90vh;
-            }
-            .clima-info {
-                width: 95%;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parque de Diversiones Don Samaco</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #e0f7fa;
+    }
+
+    header {
+      background-color: #00b0ff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00549f;
+      margin-top: 40px;
+    }
+
+    .scroll-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 20px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .scroll-container::-webkit-scrollbar-thumb {
+      background: #00b0ff;
+      border-radius: 10px;
+    }
+
+    .scroll-card {
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .scroll-card:hover {
+      transform: scale(1.05);
+    }
+
+    .scroll-card img {
+      width: 100%;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .scroll-card h3, .scroll-card p {
+      padding: 10px;
+      margin: 0;
+    }
+
+    .descripcion {
+      display: none;
+      font-size: 0.9rem;
+      padding: 10px;
+      background-color: #f0f8ff;
+      border-top: 1px solid #ccc;
+      color: #333;
+    }
+
+    footer {
+      background-color: #00b0ff;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="logo.png" alt="Logo del Parque"> <h1>Don Samaco Park</h1>
+
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo del Parque">
+      <h1>Don Samaco Park</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#juegos">Juegos</a></li>
+        <li><a href="#productos">Productos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="juegos">
+      <h2>Juegos del Parque</h2>
+      <div class="scroll-container">
+        <div class="scroll-card" onclick="toggleDesc(this)">
+          <img src="atraccion1.jpg" alt="Montaña Rusa">
+          <h3>Montaña Rusa</h3>
+          <div class="descripcion">Alta velocidad y curvas extremas. ¡Solo para valientes!</div>
         </div>
-        <nav>
-            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
-                ☰
-            </button>
-            <ul id="nav-list">
-                <li><a href="#atracciones">Atracciones</a></li>
-                <li><a href="#eventos">Eventos</a></li>
-                <li><a href="#hospedaje">Hospedaje</a></li>
-                <li><a href="#tienda">Tienda</a></li>
-                <li><a href="#tickets">Tickets</a></li>
-                <li><a href="#clima">Clima</a></li>
-            </ul>
-        </nav>
-    </header>
+        <div class="scroll-card" onclick="toggleDesc(this)">
+          <img src="atraccion2.jpg" alt="Carrusel">
+          <h3>Carrusel</h3>
+          <div class="descripcion">Ideal para niños pequeños y familias.</div>
+        </div>
+        <div class="scroll-card" onclick="toggleDesc(this)">
+          <img src="atraccion3.jpg" alt="Barco Pirata">
+          <h3>Barco Pirata</h3>
+          <div class="descripcion">Una aventura sobre las olas del mar.</div>
+        </div>
+        <!-- Puedes agregar más juegos duplicando bloques -->
+      </div>
+    </section>
 
-    <main>
-        <section class="hero-section">
-            <div class="container">
-                <h1>Bienvenido a Don Samaco Park</h1>
-                <p>El mejor lugar para la diversión y la aventura familiar. ¡Descubre nuestras increíbles atracciones, eventos, opciones de hospedaje y tiendas!</p>
-                <a href="#atracciones" class="cta-button">Descubre la Aventura</a>
-            </div>
-        </section>
+    <section id="productos">
+      <h2>Productos dentro del Parque</h2>
+      <div class="scroll-container">
+        <div class="scroll-card" onclick="toggleDesc(this)">
+          <img src="tienda1.jpg" alt="Peluches">
+          <h3>Peluches</h3>
+          <div class="descripcion">Peluches de personajes del parque desde Q30. ¡Llévate uno a casa!</div>
+        </div>
+        <div class="scroll-card" onclick="toggleDesc(this)">
+          <img src="tienda2.jpg" alt="Gorras">
+          <h3>Gorras</h3>
+          <div class="descripcion">Gorras con logo oficial de Don Samaco Park. Q25.</div>
+        </div>
+        <div class="scroll-card" onclick="toggleDesc(this)">
+          <img src="tienda3.jpg" alt="Llaveros">
+          <h3>Llaveros</h3>
+          <div class="descripcion">Llaveros coleccionables con forma de atracciones icónicas.</div>
+        </div>
+        <!-- Agrega más productos aquí -->
+      </div>
+    </section>
+  </main>
 
-        <section id="atracciones" class="atracciones-section">
-            <h2>Nuestras Atracciones</h2>
-            <div class="atracciones-grid">
-                <div class="atraccion-card">
-                    <img src="atraccion1.jpg" alt="Montaña Rusa"> <h3>Montaña Rusa El Tornado</h3>
-                    <p>La atracción más emocionante del parque, ¡adrenalina al máximo!</p>
-                </div>
-                <div class="atraccion-card">
-                    <img src="atraccion2.jpg" alt="Carrusel">  <h3>Carrusel Mágico</h3>
-                    <p>Un clásico para toda la familia, ¡ven a dar un paseo!</p>
-                </div>
-                <div class="atraccion-card">
-                    <img src="atraccion3.jpg" alt="Columpio Volador">  <h3>Columpio Volador</h3>
-                    <p>Siente la emoción de volar por los aires.</p>
-                </div>
-                <div class="atraccion-card">
-                    <img src="atraccion4.jpg" alt="Barco">  <h3>Barco Pirata</h3>
-                    <p>Navega en esta aventura.</p>
-                </div>
-                <div class="atraccion-card">
-                    <img src="atraccion5.jpg" alt="Rueda de la Fortuna">  <h3>Rueda de la Fortuna</h3>
-                    <p>Disfruta de las vistas panorámicas del parque.</p>
-                </div>
-            </div>
-        </section>
+  <footer>
+    <p>© 2025 Don Samaco Park. Todos los derechos reservados.</p>
+  </footer>
 
-        <section id="eventos" class="eventos-section">
-            <h2>Próximos Eventos</h2>
-             <div class="eventos-grid">
-                <div class="evento-card">
-                    <img src="evento1.jpg" alt="Evento de Música"> <h3>Concierto de Verano</h3>
-                    <p>Disfruta de la mejor música en vivo con artistas invitados.</p>
-                </div>
-                <div class="evento-card">
-                    <img src="evento2.jpg" alt="Desfile de Halloween">  <h3>Noche de Brujas</h3>
-                    <p>Celebra Halloween con nuestro desfile de disfraces y sorpresas.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="hospedaje" class="hospedaje-section">
-            <h2>Opciones de Hospedaje</h2>
-            <div class="hospedaje-grid">
-                <div class="hospedaje-card">
-                    <img src="hotel1.jpg" alt="Hotel Parque 1"> <h3>Hotel Don Samaco Plaza</h3>
-                    <p>El hotel de lujo del parque, con todas las comodidades para una estancia inolvidable.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="tienda" class="tienda-section">
-            <h2>Tienda de Recuerdos</h2>
-            <p>Visita nuestras tiendas para encontrar el recuerdo perfecto de tu aventura en Don Samaco Park. ¡Demostraciones de productos disponibles!</p>
-            <div class="tienda-grid">
-                <div class="tienda-card">
-                    <img src="tienda1.jpg" alt="Tienda de Peluches"> <h3>Peluches y Juguetes</h3>
-                    <p>Encuentra los peluches de tus personajes favoritos y juguetes para todas las edades.</p>
-                    <p><strong>Demostración:</strong> Sábados de 10:00 a 12:00.</p>
-                </div>
-                <div class="tienda-card">
-                    <img src="tienda2.jpg" alt="Tienda de Ropa">  <h3>Ropa y Accesorios</h3>
-                    <p>Camisetas, gorras, y accesorios exclusivos del parque.</p>
-                     <p><strong>Demostración:</strong> Domingos de 14:00 a 16:00.</p>
-                </div>
-                <div class="tienda-card">
-                    <img src="tienda3.jpg" alt="Tienda de Dulces">  <h3>Dulces y Golosinas</h3>
-                    <p>Disfruta de una variedad de dulces y golosinas temáticas.</p>
-                    <p><strong>Demostración:</strong> Viernes de 16:00 a 18:00.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="clima" class="clima-section">
-            <h2>Clima en Don Samaco Park</h2>
-            <div class="clima-info">
-                <div class="clima-actual">
-                    <img src="clima-soleado.png" alt="Clima Soleado">  <div>
-                        <h3>25°C</h3>
-                        <p>Soleado</p>
-                    </div>
-                </div>
-                <div class="clima-pronostico">
-                    <div>
-                        <img src="clima-nublado.png" alt="Clima Nublado">  <span>Mañana: 22°C, Nublado</span>
-                    </div>
-                    <div>
-                        <img src="clima-lluvioso.png" alt="Clima Lluvioso">  <span>Tarde: 20°C, Lluvioso</span>
-                    </div>
-                    <div>
-                        <img src="clima-soleado.png" alt="Clima Soleado">  <span>Sábado: 24°C, Soleado</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="tickets" class="tickets-section">
-            <h2>Tickets</h2>
-            <p>Adquiere tus tickets y pases de temporada para disfrutar de todas las emociones que Don Samaco Park tiene para ti.</p>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2025 Don Samaco Park. Todos los derechos reservados.</p>
-    </footer>
-
-    <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const navList = document.getElementById('nav-list');
-
-        menuToggle.addEventListener('click', () => {
-            navList.classList.toggle('nav-open');
-        });
-    </script>
+  <script>
+    function toggleDesc(card) {
+      const desc = card.querySelector(".descripcion");
+      desc.style.display = desc.style.display === "block" ? "none" : "block";
+    }
+  </script>
 </body>
 </html>
