@@ -37,6 +37,11 @@
             margin-right: 10px;
         }
 
+        header nav {
+            display: flex;
+            align-items: center; /* Centra verticalmente los elementos del nav */
+        }
+
         header nav ul {
             list-style: none;
             display: flex;
@@ -58,6 +63,42 @@
 
         header nav ul li a:hover {
             color: #0077b6; /* Un tono más oscuro de celeste al pasar el ratón */
+        }
+
+        .menu-toggle { /* Nuevo estilo para el botón de menú en মোবাইল */
+            display: none; /* Oculto por defecto en pantallas grandes */
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 10px; /* Espacio a la izquierda del botón */
+        }
+
+        .menu-toggle:focus {
+            outline: none; /* Elimina el borde de enfoque predeterminado */
+        }
+
+        .nav-open { /* Clase que se agrega al nav cuando el menú está abierto */
+            display: flex !important;
+            flex-direction: column;
+            position: absolute;
+            top: 100%; /* Se muestra debajo del header */
+            right: 0;
+            background-color: #00b0ff; /* El mismo color del header */
+            width: 100%; /* Ancho completo */
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 100; /* Asegura que el menú esté por encima de otros elementos */
+        }
+
+        .nav-open ul {
+            flex-direction: column;
+        }
+
+        .nav-open ul li {
+            margin: 10px 0;
         }
 
         .hero-section {
@@ -413,6 +454,26 @@
         @media (max-width: 768px) {
             header nav ul {
                 flex-direction: column;
+                display: none; /* Oculta el menú en pantallas pequeñas por defecto */
+            }
+            header nav {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                width: 100%;
+                justify-content: space-between;
+            }
+            header nav ul.nav-open{
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: #00b0ff;
+                width: 100%;
+                text-align: center;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                z-index: 100;
             }
             header nav ul li {
                 margin-left: 0;
@@ -423,6 +484,9 @@
             }
             .hero-section p {
                 font-size: 1rem;
+            }
+            .menu-toggle { /* Muestra el botón de menú en pantallas pequeñas */
+                display: block;
             }
         }
 
@@ -449,7 +513,10 @@
             <img src="logo.png" alt="Logo del Parque"> <h1>Don Samaco Park</h1>
         </div>
         <nav>
-            <ul>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+                ☰
+            </button>
+            <ul id="nav-list">
                 <li><a href="#atracciones">Atracciones</a></li>
                 <li><a href="#eventos">Eventos</a></li>
                 <li><a href="#hospedaje">Hospedaje</a></li>
@@ -575,8 +642,12 @@
     </footer>
 
     <script>
-       // No se requiere JavaScript adicional para la estructura básica de la página.
-       //  Puedes agregar interactividad con JS si lo deseas (por ejemplo, animaciones, efectos, etc.).
+        const menuToggle = document.getElementById('menu-toggle');
+        const navList = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('nav-open');
+        });
     </script>
 </body>
 </html>
