@@ -1,70 +1,499 @@
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* Estilos generales */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e0f7fa; /* Celeste muy claro */
+}
 
-  .menu-toggle {
-    display: block;
-    margin-left: auto;
-  }
-
-  nav ul {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background-color: #00b0ff;
-  }
-
-  nav.nav-open ul {
-    display: flex;
-  }
-
-  nav ul li {
-    margin: 10px 0;
-    text-align: center;
-  }
-
-  .carousel-item {
-    width: 90% !important;
-    min-width: 260px;
-  }
-
-  .atraccion-card,
-  .precio-card {
-    padding: 15px;
-  }
-
-  .hero-section h1 {
-    font-size: 1.8rem;
-  }
-
-  .hero-section p {
-    font-size: 1rem;
-  }
-
-  .cta-button {
-    font-size: 1rem;
+header {
+    background-color: #00b0ff; /* Celeste más intenso */
     padding: 10px 20px;
-  }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+header nav {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos del nav */
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #0077b6; /* Un tono más oscuro de celeste al pasar el ratón */
+}
+
+.menu-toggle { /* Nuevo estilo para el botón de menú en móvil */
+    display: none; /* Oculto por defecto en pantallas grandes */
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px; /* Espacio a la izquierda del botón */
+}
+
+.menu-toggle:focus {
+    outline: none; /* Elimina el borde de enfoque predeterminado */
+}
+
+.nav-open { /* Clase que se agrega al nav cuando el menú está abierto */
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Se muestra debajo del header */
+    right: 0;
+    background-color: #00b0ff; /* El mismo color del header */
+    width: 100%; /* Ancho completo */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 100; /* Asegura que el menú esté por encima de otros elementos */
+}
+
+.nav-open ul {
+    flex-direction: column;
+}
+
+.nav-open ul li {
+    margin: 10px 0;
+}
+
+.hero-section {
+    background-image: url('parque_atracciones.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    position: relative;
+}
+
+hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 176, 255, 0.4); /* Capa celeste semi-transparente */
+    z-index: 1;
+}
+
+.hero-section .container {
+    z-index: 2;
+    max-width: 800px;
+}
+
+hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: #ffdb58;
+    color: #00549f;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+cta-button:hover {
+    background-color: #f5c617; /* Un tono más oscuro de amarillo al pasar el ratón */
+    transform: translateY(-2px);
+}
+
+.atracciones-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #e0f7fa; /* Celeste muy claro */
+}
+
+atracciones-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #00549f;
+}
+
+atracciones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+atraccion-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+atraccion-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+atraccion-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    height: 200px;
+    object-fit: cover;
+}
+
+atraccion-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #00549f;
+}
+
+atraccion-card p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.eventos-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #e0f7fa; /* Celeste muy claro */
+}
+
+eventos-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #00549f;
+}
+
+eventos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+evento-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+evento-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+evento-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    height: 200px;
+    object-fit: cover;
+}
+
+evento-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #00549f;
+}
+
+evento-card p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.hospedaje-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #e0f7fa;
+}
+
+hospedaje-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #00549f;
+}
+
+hospedaje-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+hospedaje-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+hospedaje-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+hospedaje-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    height: 250px;
+    object-fit: cover;
+}
+
+hospedaje-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #00549f;
+}
+
+hospedaje-card p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.tienda-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #e0f7fa;
+}
+
+tienda-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #00549f;
+}
+
+tienda-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+tienda-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+tienda-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+tienda-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    height: 200px;
+    object-fit: cover;
+}
+
+tienda-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #00549f;
+}
+
+tienda-card p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.clima-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #e0f7fa;
+}
+
+.clima-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #00549f;
+}
+
+.clima-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+.clima-actual {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.clima-actual img {
+    width: 80px;
+    margin-right: 20px;
+}
+
+.clima-actual h3 {
+    font-size: 2rem;
+    color: #00549f;
+    margin-bottom: 0;
+}
+
+.clima-pronostico {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clima-pronostico div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.clima-pronostico img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.clima-pronostico span {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+footer {
+    background-color: #00b0ff;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+        display: none; /* Oculta el menú en pantallas pequeñas por defecto */
+    }
+    header nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+    }
+    header nav ul.nav-open{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #00b0ff;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 100;
+    }
+    header nav ul li {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    .hero-section p {
+        font-size: 1rem;
+    }
+    .menu-toggle { /* Muestra el botón de menú en pantallas pequeñas */
+        display: block;
+    }
 }
 
 @media (max-width: 480px) {
-  .carousel-item {
-    width: 100% !important;
-  }
-
-  header .logo {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-container {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-section {
-    text-align: center;
-  }
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    header .logo {
+        margin-bottom: 10px;
+    }
+    .hero-section {
+        height: 90vh;
+    }
+    .clima-info {
+        width: 95%;
+    }
 }
-
