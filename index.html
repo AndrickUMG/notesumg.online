@@ -6,7 +6,8 @@
   <title>Parque de Diversiones Don Samaco</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="carousel-styles.css" />
+  <!-- Si no existe, comenta esta línea -->
+  <!-- <link rel="stylesheet" href="carousel-styles.css" /> -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 </head>
@@ -80,6 +81,8 @@
       <div id="clima-actual">
         <p>Cargando clima...</p>
       </div>
+      <div id="pronostico" class="pronostico-grid"></div>
+      <div id="recomendacion" class="clima-recomendacion"></div>
     </section>
 
     <section id="tickets" class="tickets-section">
@@ -95,17 +98,17 @@
   <script>
     const apiKey = '1b1ab8708f61241f34908aa8cabdcf02';
     const ciudad = 'Guatemala';
-    
+
     async function obtenerClima() {
       try {
         // Clima actual
         const climaActual = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric&lang=es`);
         const datosActual = await climaActual.json();
-    
+
         const icono = datosActual.weather[0].icon;
         const descripcion = datosActual.weather[0].description;
         const temperatura = Math.round(datosActual.main.temp);
-    
+
         document.getElementById('clima-actual').innerHTML = `
           <div class="clima-actual">
             <img src="https://openweathermap.org/img/wn/${icono}@2x.png" alt="${descripcion}">
@@ -115,16 +118,16 @@
             </div>
           </div>
         `;
-    
+
         mostrarRecomendacion(temperatura);
-    
-        // Pronóstico 3 días (cada 8 * 3 = 24h → 1 punto por día)
+
+        // Pronóstico 3 días
         const climaFuturo = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${ciudad}&appid=${apiKey}&units=metric&lang=es`);
         const datosFuturo = await climaFuturo.json();
-    
+
         const pronostico = document.getElementById('pronostico');
         pronostico.innerHTML = '';
-    
+
         for (let i = 8; i <= 24; i += 8) {
           const dia = datosFuturo.list[i];
           const fecha = new Date(dia.dt * 1000);
@@ -132,7 +135,7 @@
           const temp = Math.round(dia.main.temp);
           const icon = dia.weather[0].icon;
           const desc = dia.weather[0].description;
-    
+
           pronostico.innerHTML += `
             <div class="pronostico-card">
               <h4>${diaNombre}</h4>
@@ -142,17 +145,17 @@
             </div>
           `;
         }
-    
+
       } catch (error) {
         console.error(error);
         document.getElementById('clima-actual').innerHTML = `<p>No se pudo obtener el clima en este momento.</p>`;
       }
     }
-    
+
     function mostrarRecomendacion(temp) {
       const div = document.getElementById('recomendacion');
       let texto = '';
-    
+
       if (temp <= 18) {
         texto = '🌬️ Hace frío, te recomendamos llevar un suéter o chaqueta.';
       } else if (temp > 18 && temp <= 24) {
@@ -160,13 +163,12 @@
       } else {
         texto = '☀️ Hace calor, ¡lleva ropa fresca y mantente hidratado!';
       }
-    
+
       div.textContent = texto;
     }
-    
+
     document.addEventListener('DOMContentLoaded', obtenerClima);
-    </script>
-    
-  <script src="app.js"></script>
+  </script>
+
 </body>
 </html>
