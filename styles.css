@@ -142,97 +142,52 @@ header nav ul li a:hover {
     gap: 20px;
 }
 
-/* === Clima === */
-.clima-section {
-  background-color: #e0f7fa;
-  padding: 40px 20px;
-  text-align: center;
-}
-
+/* Clima actual */
 .clima-actual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  background-color: #f2faff;
-  padding: 1.5rem;
-  border-radius: 16px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 320px;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    background-color: #eef6fb;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    gap: 1rem;
+    margin: 0 auto;
 }
-
-.clima-actual img {
-  width: 64px;
-  height: 64px;
-}
-
-.clima-actual h3 {
-  margin: 0;
-  font-size: 1.8rem;
-  color: #00549f;
-}
-
-.clima-actual p {
-  margin: 0;
-  font-size: 1rem;
-  color: #333;
-}
-
-/* Pronóstico 3 días */
-.pronostico-grid {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-.pronostico-card {
-  background: white;
-  padding: 1rem;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  min-width: 120px;
-  flex: 1 0 120px;
-  transition: transform 0.2s ease;
-}
-
-.pronostico-card:hover {
-  transform: scale(1.05);
-}
-
-.pronostico-card h4 {
-  margin: 0;
-  font-size: 1rem;
-  color: #00549f;
-  text-transform: capitalize;
-}
-
-.pronostico-card p {
-  margin: 0.3rem 0;
-  font-size: 1.4rem;
-  color: #333;
-}
-
-.pronostico-card small {
-  color: #555;
-  font-size: 0.9rem;
-}
-
-/* Recomendación */
-.clima-recomendacion {
-  margin-top: 30px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: #00549f;
-}
-
 
 .clima-actual img {
     width: 64px;
     height: 64px;
 }
+
+.eventos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .evento-card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  .evento-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .evento-card h3 {
+    margin: 0.5rem 0;
+    color: #00549f;
+  }
+  
+  .evento-card p {
+    margin: 0.3rem 0;
+  }
+  
