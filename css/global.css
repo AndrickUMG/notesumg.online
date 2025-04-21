@@ -1,0 +1,171 @@
+/* Estilos globales de Don Samaco Park */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f7fa;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+    color: #00549f;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  h3 {
+    font-size: 1.8rem;
+    color: #00549f;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+  
+  a {
+    color: #00b0ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #0077b6;
+  }
+  
+  footer {
+    background-color: #00b0ff;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+  }
+  
+  /* HEADER */
+  header {
+    background-color: #00b0ff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  header .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  header .logo img {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  header .logo h1 {
+    font-size: 1.8rem;
+    color: white;
+    margin: 0;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  nav ul li a:hover {
+    color: #ffdb58;
+  }
+  
+  .menu-toggle {
+    display: none;
+  }
+  
+  /* HERO */
+  .hero-section {
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .hero-section .cta-button {
+    background-color: #ffdb58;
+    color: #00549f;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .hero-section .cta-button:hover {
+    background-color: #f5c617;
+    transform: translateY(-2px);
+  }
+  
+  /* GRIDS DE CONTENIDO */
+  .atracciones-grid,
+  .eventos-grid,
+  .hospedaje-grid,
+  .tienda-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  /* CARDS BÁSICAS */
+  .evento-card,
+  .tienda-card,
+  .atraccion-card,
+  .hospedaje-card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .evento-card img,
+  .tienda-card img,
+  .atraccion-card img,
+  .hospedaje-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* TEXTO EN CARDS */
+  .evento-card h3,
+  .tienda-card h3,
+  .atraccion-card h3,
+  .hospedaje-card h3 {
+    margin: 0.5rem 0;
+    color: #00549f;
+  }
+  
+  .evento-card p,
+  .tienda-card p,
+  .atraccion-card p,
+  .hospedaje-card p {
+    margin: 0.3rem 0;
+  }
+  
