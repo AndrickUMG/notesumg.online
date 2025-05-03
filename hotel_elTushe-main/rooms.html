@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habitaciones - Hotel el Tushe</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+  <style>
+    :root {
+      --celeste: #00bcd4;
+      --blanco: #ffffff;
+      --negro: #222222;
+      --rojo: #e53935;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Open Sans', sans-serif; background: var(--blanco); color: var(--negro); }
+    header, footer {
+      background: var(--negro);
+      color: var(--blanco);
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: var(--blanco);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--rojo);
+    }
+    section {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .room-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .room-link {
+      text-decoration: none;
+    }
+    .room-card {
+      background: var(--celeste);
+      color: var(--blanco);
+      border-radius: 15px;
+      overflow: hidden;
+      width: 300px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .room-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      z-index: 2;
+    }
+    .room-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .room-card h3 {
+      margin: 1rem 0 0.5rem;
+      font-size: 1.5rem;
+    }
+    .room-card p {
+      padding: 0 1rem 1.5rem;
+      font-size: 1rem;
+    }
+    .room-card .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--rojo);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hotel el Tushe</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="rooms.html">Habitaciones</a></li>
+        <li><a href="bb.html">Reservas</a></li>
+        <li><a href="contact.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section>
+    <h2>Nuestras Habitaciones</h2>
+    <div class="room-grid">
+      <a href="bb.html?room=luxury" class="room-link">
+        <div class="room-card">
+          <img src="images/luxury.png" alt="Suite Tushe de Lujo">
+          <h3>Suite Tushe de Lujo</h3>
+          <p>Elegancia y confort con vista panorámica y amenidades premium.</p>
+          <p class="price">Q599.99</p>
+        </div>
+      </a>
+      <a href="bb.html?room=deluxe" class="room-link">
+        <div class="room-card">
+          <img src="images/delux.png" alt="Suite Tushe Deluxe">
+          <h3>Suite Tushe Deluxe</h3>
+          <p>Amplia, moderna y perfecta para una estancia memorable.</p>
+          <p class="price">Q499.99</p>
+        </div>
+      </a>
+      <a href="bb.html?room=premier" class="room-link">
+        <div class="room-card">
+          <img src="images/premier.png" alt="Suite Tushe Premier">
+          <h3>Suite Tushe Premier</h3>
+          <p>Comodidad, estilo y acceso a beneficios exclusivos.</p>
+          <p class="price">Q299.99</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Hotel el Tushe - Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>

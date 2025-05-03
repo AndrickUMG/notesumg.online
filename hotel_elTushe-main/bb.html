@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservas - Hotel el Tushe</title>
+  <style>
+    :root {
+      --celeste: #00bcd4;
+      --blanco: #ffffff;
+      --negro: #222222;
+      --rojo: #e53935;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--blanco);
+      color: var(--negro);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: var(--negro);
+      color: var(--blanco);
+      padding: 2rem 1rem 1rem;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0;
+      margin: 1rem 0 0;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: var(--blanco);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--rojo);
+    }
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(to bottom right, var(--celeste), var(--blanco));
+      padding: 2rem;
+    }
+    form {
+      background: var(--blanco);
+      padding: 2rem 3rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+    label {
+      display: block;
+      margin: 1rem 0 0.5rem;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--celeste);
+      box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.3);
+    }
+    input[type="submit"] {
+      background: var(--rojo);
+      color: var(--blanco);
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 2rem;
+      transition: background 0.3s ease;
+    }
+    input[type="submit"]:hover {
+      background: #c62828;
+    }
+    footer {
+      background: var(--negro);
+      color: var(--blanco);
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+
+  <!-- Firebase y SweetAlert2 -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, query, where, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import Swal from "https://cdn.jsdelivr.net/npm/sweetalert2@11/+esm";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBDJeze6ibv446maeLso00v5hWx-7o3vpc",
+      authDomain: "parquediversiones-5bef1.firebaseapp.com",
+      projectId: "parquediversiones-5bef1",
+      storageBucket: "parquediversiones-5bef1.firebasestorage.app",
+      messagingSenderId: "534239241861",
+      appId: "1:534239241861:web:1113c526f8cfe17c996bec"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const nombre = document.getElementById("name").value;
+        const correo = document.getElementById("email").value;
+        const habitacion = document.getElementById("rooms").options[document.getElementById("rooms").selectedIndex].text;
+        const personas = parseInt(document.getElementById("guests").value);
+        const fecha = document.getElementById("date").value;
+
+        try {
+          // Buscar si ya existe una reserva para la misma habitación y fecha
+          const reservasRef = collection(db, "reservaciones");
+          const q = query(reservasRef, where("habitacion", "==", habitacion), where("fecha", "==", fecha));
+          const querySnapshot = await getDocs(q);
+
+          if (!querySnapshot.empty) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Habitación ocupada',
+              text: 'Ya existe una reserva para esta habitación en esa fecha.',
+            });
+            return;
+          }
+
+          const nuevaReserva = {
+            nombre,
+            correo,
+            habitacion,
+            personas,
+            fecha,
+            timestamp: serverTimestamp()
+          };
+
+          await addDoc(reservasRef, nuevaReserva);
+
+          Swal.fire({
+            icon: 'success',
+            title: '¡Reserva realizada!',
+            text: 'Tu reserva ha sido registrada correctamente.',
+          });
+
+          form.reset();
+        } catch (error) {
+          console.error("Error al guardar la reserva:", error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Hubo un problema al registrar la reserva. Intenta nuevamente.',
+          });
+        }
+      });
+
+      // Preseleccionar habitación si viene en la URL
+      const params = new URLSearchParams(window.location.search);
+      const room = params.get('room');
+      if (room) {
+        const select = document.querySelector('#rooms');
+        if (select) {
+          select.value = room;
+        }
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>Formulario de Reserva</h1>
+    <p>Reserva tu habitación en el Hotel el Tushe</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="rooms.html">Habitaciones</a></li>
+        <li><a href="bb.html">Reservas</a></li>
+        <li><a href="contact.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <form>
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="rooms">Tipo de habitación:</label>
+      <select name="Rooms" id="rooms">
+        <option value="luxury">Suite Tushe de Lujo</option>
+        <option value="deluxe">Suite Tushe Deluxe</option>
+        <option value="premier">Suite Tushe Premier</option>
+      </select>
+
+      <label for="guests">Número de personas:</label>
+      <input type="number" id="guests" name="guests" min="1" value="1" required>
+
+      <label for="date">Fecha:</label>
+      <input type="date" id="date" name="date" required>
+
+      <input type="submit" value="Reservar">
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Hotel el Tushe - Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>

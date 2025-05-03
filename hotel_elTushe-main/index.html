@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel el Tushe</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" />
+  <style>
+    :root {
+      --celeste: #00bcd4;
+      --blanco: #ffffff;
+      --negro: #222222;
+      --rojo: #e53935;
+      --verde: #10b981;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--blanco);
+      color: var(--negro);
+    }
+
+    header, footer {
+      background: var(--negro);
+      color: var(--blanco);
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: var(--blanco);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--rojo);
+    }
+
+    .hero {
+      position: relative;
+      text-align: center;
+      color: white;
+    }
+
+    .hero img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      filter: brightness(65%);
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-text h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--blanco);
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: var(--blanco);
+    }
+
+    section {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .service-card {
+      background: var(--celeste);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 250px;
+      color: var(--blanco);
+    }
+
+    .service-card h3 {
+      color: var(--blanco);
+      margin-bottom: 0.5rem;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+    }
+
+    .regresar-btn {
+      display: inline-block;
+      margin-top: 3rem;
+      background: var(--verde);
+      color: var(--blanco);
+      padding: 12px 20px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    .regresar-btn:hover {
+      background: #059669;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Hotel el Tushe</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="rooms.html">Habitaciones</a></li>
+        <li><a href="bb.html">Reservas</a></li>
+        <li><a href="contact.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="images/main_slider11.png" alt="Vista del hotel" />
+    <div class="hero-text">
+      <h2>Bienvenido al paraíso</h2>
+      <p>Tu experiencia de lujo comienza aquí. Descubre tranquilidad, comodidad y servicio excepcional.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>¿Por qué elegirnos?</h2>
+    <div class="services">
+      <div class="service-card">
+        <h3>Dentro del parque Don Samaco</h3>
+        <p>Hospédate en el corazón del parque de diversiones Don Samaco Park. ¡Ideal si vienes a disfrutar del parque!</p>
+      </div>
+      <div class="service-card">
+        <h3>Atención personalizada</h3>
+        <p>Un equipo listo para ayudarte y hacer tu estancia inolvidable.</p>
+      </div>
+      <div class="service-card">
+        <h3>Ambiente acogedor</h3>
+        <p>Diseñado para que te sientas como en casa, con un toque de elegancia.</p>
+      </div>
+      <div class="service-card">
+        <h3>Fácil reservación</h3>
+        <p>Reserva en línea de forma rápida y segura desde cualquier lugar.</p>
+      </div>
+    </div>
+
+    <!-- Botón para volver a Don Samaco Park -->
+    <a href="../index.html" class="regresar-btn">← Volver a Don Samaco Park</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Hotel El Tushe - Todos los derechos reservados</p>
+  </footer>
+
+</body>
+</html>

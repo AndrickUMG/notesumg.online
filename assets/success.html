@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Pago Exitoso - Tu Ticket</title>
+   <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js" defer></script>
+   <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.3.1/lib/qr-code-styling.min.js" defer></script>
+
+   <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
+      import { getFirestore, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+         apiKey: "AIzaSyBDJeze6ibv446maeLso00v5hWx-7o3vpc",
+         authDomain: "parquediversiones-5bef1.firebaseapp.com",
+         projectId: "parquediversiones-5bef1",
+         storageBucket: "parquediversiones-5bef1.appspot.com",
+         messagingSenderId: "534239241861",
+         appId: "1:534239241861:web:1113c526f8cfe17c996bec"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      function generarCodigoQR() {
+         return Math.random().toString(36).substring(2, 10).toUpperCase();
+      }
+
+      async function guardarTicketEnFirebase(transactionId, tipoEntrada, montoTotal, cantidadEntradas) {
+    try {
+        const q = query(collection(db, "tickets"), where("codigoQR", "==", transactionId));
+        const querySnapshot = await getDocs(q);
+
+        if (!querySnapshot.empty) {
+            console.log("⚠️ Ticket ya existe en Firebase, no se guarda nuevamente.");
+            return;
+        }
+
+        await addDoc(collection(db, "tickets"), {
+            codigoQR: transactionId,
+            fecha: new Date(),
+            usado: false,
+            tipoEntrada: tipoEntrada,
+            montoTotal: montoTotal,
+            cantidadEntradas: cantidadEntradas // ✅ Ahora se guarda la cantidad de entradas
+        });
+
+        console.log("✅ Ticket guardado en Firebase con tipo de entrada, monto total y cantidad de entradas.");
+    } catch (e) {
+        console.error("❌ Error al guardar el ticket en Firebase:", e);
+    }
+}
+
+      document.addEventListener("DOMContentLoaded", async function () {
+    console.log("🔹 Cargando ticket...");
+
+    // Asegurar que jsPDF está disponible antes de asignarlo
+    if (window.jspdf) {
+        window.jsPDF = window.jspdf.jsPDF;
+    } else {
+        console.error("❌ jsPDF no está definido.");
+    }
+
+    let params = new URLSearchParams(window.location.search);
+    let sessionId = params.get("session_id");
+
+    if (!sessionId) {
+        console.error("❌ No se encontró session_id en la URL.");
+        return;
+    }
+
+    console.log("📌 Consultando detalles de la sesión de Stripe...");
+
+    try {
+        let response = await fetch(`http://localhost:3000/obtener-detalles-sesion?session_id=${sessionId}`);
+        let data = await response.json();
+
+        if (!data || !data.transactionId) {
+            console.error("❌ No se encontró transactionId en la sesión de Stripe.");
+            return;
+        }
+
+        // ⚠️ Verificar si la compra es nueva
+        let prevSessionId = localStorage.getItem("prevSessionId");
+        let transactionId;
+
+        if (prevSessionId !== sessionId) {
+            console.log("🆕 Nueva compra detectada, generando nuevo Transaction ID...");
+            transactionId = generarCodigoQR();
+            localStorage.setItem("transactionId", transactionId);
+            localStorage.setItem("prevSessionId", sessionId);
+            localStorage.removeItem("ticketGuardado"); // Permite guardar un nuevo ticket en Firebase
+        } else {
+            console.log("♻️ Misma sesión detectada, reutilizando Transaction ID...");
+            transactionId = localStorage.getItem("transactionId");
+        }
+
+        console.log("📌 Transaction ID FINAL:", transactionId);
+        document.getElementById("transactionId").innerText = transactionId;
+
+        let tipoEntrada = data.tipoEntrada || "Desconocido";
+        let montoTotal = parseFloat((data.montoTotal / 100).toFixed(2)); // ✅ Convertimos de centavos a quetzales
+
+// 🔹 Normalizar el tipo de entrada eliminando espacios y asegurando minúsculas
+let tipoEntradaNormalizado = tipoEntrada.toLowerCase().trim();
+
+// 🔹 Definir los precios correctos de cada tipo de entrada
+const preciosEntradas = {
+    "entrada general": 25,
+    "pase a atracciones": 150
+};
+
+
+// 🔹 Intentar emparejar el tipo de entrada con las claves de preciosEntradas
+let precioEntrada = null;
+
+if (tipoEntradaNormalizado.includes("entrada")) {
+    precioEntrada = 25;
+} else if (tipoEntradaNormalizado.includes("pase") || tipoEntradaNormalizado.includes("tarjeta")) {
+    precioEntrada = 150;
+}
+
+if (!precioEntrada) {
+    console.warn(`⚠️ Tipo de entrada "${tipoEntradaNormalizado}" no reconocido.`);
+    precioEntrada = 1;
+}
+
+// 🔹 Si no se encuentra una coincidencia exacta, mostrar advertencia
+if (!precioEntrada) {
+    console.warn(`⚠️ Tipo de entrada "${tipoEntrada}" no encontrado en la lista de precios.`);
+    precioEntrada = 1; // Evita división por 0 y errores
+}
+
+// 🔹 Calcular correctamente la cantidad de entradas
+let cantidadEntradas = Math.floor(montoTotal / precioEntrada);
+
+console.log("📌 Tipo de entrada (original):", tipoEntrada);
+console.log("📌 Tipo de entrada (normalizado):", tipoEntradaNormalizado);
+console.log("📌 Monto total:", montoTotal);
+console.log("📌 Precio por entrada:", precioEntrada);
+console.log("📌 Cantidad de entradas:", cantidadEntradas);
+
+        document.getElementById("tipoEntrada").innerText = tipoEntrada;
+        document.getElementById("cantidadEntradas").innerText = cantidadEntradas;
+        document.getElementById("montoTotal").innerText = `${montoTotal.toFixed(2)}`;
+        
+
+        // 🔄 Generar nuevo código QR solo si la compra es nueva
+        let qrContainer = document.getElementById("qrcode");
+        qrContainer.innerHTML = ""; 
+        const qrCode = new QRCodeStyling({
+            width: 250,
+            height: 250,
+            type: "svg",
+            data: `https://tu-parque.com/validar?ticket=${transactionId}`,
+            dotsOptions: { color: "#000", type: "rounded" },
+            backgroundOptions: { color: "#FFF" }
+        });
+        qrCode.append(qrContainer);
+
+            // ✅ Guardar en Firebase solo si es una nueva compra
+              if (!localStorage.getItem("ticketGuardado")) {
+                await guardarTicketEnFirebase(transactionId, tipoEntrada, montoTotal, cantidadEntradas);
+                  localStorage.setItem("ticketGuardado", "true");
+              }
+
+          } catch (error) {
+              console.error("❌ Error al obtener los detalles de Stripe:", error);
+          }
+
+          // Asegurar eventos de los botones
+          const downloadImageBtn = document.getElementById("downloadImage");
+          const downloadPDFBtn = document.getElementById("downloadPDF");
+          const goHomeButton = document.getElementById("goHome");
+
+          if (downloadImageBtn) {
+              downloadImageBtn.addEventListener("click", downloadImage);
+          }
+
+          if (downloadPDFBtn) {
+              downloadPDFBtn.addEventListener("click", downloadPDF);
+          }
+
+          if (goHomeButton) {
+              goHomeButton.addEventListener("click", function () {
+                  console.log("🏠 Volviendo al inicio...");
+                  localStorage.clear();
+                  window.location.href = window.location.origin + "/index.html";
+              });
+          }
+      });
+
+      function downloadImage() {
+  const ticket = document.querySelector(".ticket-content");
+
+  html2canvas(ticket, { scale: 3 }).then(canvas => {
+    let link = document.createElement("a");
+    link.href = canvas.toDataURL("image/png");
+    link.download = "ticket.png";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }).catch(error => {
+    console.error("❌ Error al generar la imagen:", error);
+  });
+}
+
+function downloadPDF() {
+  const ticket = document.querySelector(".ticket-content");
+
+  html2canvas(ticket, { scale: 3 }).then(canvas => {
+    const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+    let imgData = canvas.toDataURL("image/png");
+    const imgWidth = 180;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    doc.addImage(imgData, "PNG", 15, 20, imgWidth, imgHeight);
+    doc.save("ticket.pdf");
+  }).catch(error => {
+    console.error("❌ Error al generar el PDF:", error);
+  });
+}
+   </script>
+<style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 1rem;
+      text-align: center;
+    }
+  
+    h2 {
+      font-size: 1.6rem;
+      color: #111827;
+      margin: 0.5rem 0 0.3rem 0;
+      font-weight: 700;
+    }
+  
+    .subtitulo {
+      font-size: 0.95rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+  
+    .ticket-container.ticket-content {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  max-width: 380px;
+  margin: 1.5rem auto 1rem;
+  padding: 1.2rem;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1f2937;
+}
+
+.ticket-container.ticket-content h3 {
+  font-size: 1.1rem;
+  margin-top: 0;
+  color: #1f2937;
+}
+
+.ticket-container.ticket-content p {
+  font-size: 0.95rem;
+  color: #374151;
+  margin: 0.3rem 0;
+}
+
+.ticket-container.ticket-content span {
+  font-weight: 600;
+  color: #111827;
+}
+    #qrcode {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+    }
+  
+    .botones {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+  
+    .botones button {
+      background-color: #2563eb;
+      color: white;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+    }
+  
+    .botones button:hover {
+      background-color: #1e40af;
+    }
+  
+    @media (max-width: 480px) {
+      .ticket-container {
+        width: 92%;
+        padding: 1rem;
+      }
+  
+      h2 {
+        font-size: 1.3rem;
+      }
+  
+      .subtitulo {
+        font-size: 0.85rem;
+      }
+  
+      .botones {
+        flex-direction: column;
+        gap: 8px;
+      }
+  
+      .botones button {
+        width: 100%;
+      }
+    }
+  </style>
+  
+</head>
+<body>
+    <h2>¡Gracias por tu compra!</h2>
+    <p class="subtitulo">Tu pago ha sido exitoso. A continuación, puedes descargar tu ticket.</p>   
+  
+   <!-- En tu HTML -->
+   <div class="ticket-container ticket-content" id="ticket">
+    <h3>Tu Ticket - Don Samaco Park</h3>
+    <p>ID de transacción: <span id="transactionId"></span></p>
+    <p>Tipo de Entrada: <span id="tipoEntrada"></span></p>
+    <p>Cantidad de Entradas: <span id="cantidadEntradas"></span></p>
+    <p>Monto Total: Q<span id="montoTotal"></span></p>
+    <div id="qrcode"></div>
+  </div>
+  
+
+    <!-- ✅ Botones dentro de contenedor con estilo -->
+    <div class="botones">
+      <button id="downloadImage">Descargar Imagen</button>
+      <button id="downloadPDF">Descargar PDF</button>
+      <button id="goHome">Volver al Inicio</button>
+    </div>
+  
+    <script src="js/script.js"></script>
+    <script>
+      window.onload = function () {
+        setTimeout(() => {
+          Swal.fire({
+            title: '⚠️ ¡Importante!',
+            text: 'Asegúrate de descargar tu ticket antes de salir de este sitio.',
+            icon: 'warning',
+            confirmButtonText: 'Entendido',
+            confirmButtonColor: '#2563eb'
+          });
+        }, 500);
+      };
+    </script>
+  </body>
+  </html>
+  
