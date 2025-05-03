@@ -1,3 +1,4 @@
+<!-- index.html corregido: https://notesumg.online -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,7 +9,6 @@
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/clima.css" />
   <style>
-    /* Estilo para carrusel de atracciones */
     .carrusel-atracciones {
       display: flex;
       overflow-x: auto;
@@ -17,7 +17,6 @@
       padding: 1rem;
       scroll-behavior: smooth;
     }
-
     .tarjeta-atraccion {
       flex: 0 0 auto;
       scroll-snap-align: start;
@@ -27,7 +26,6 @@
       width: 240px;
       text-align: center;
     }
-
     .tarjeta-atraccion img {
       width: 100%;
       height: 160px;
@@ -35,13 +33,11 @@
       border-top-left-radius: 12px;
       border-top-right-radius: 12px;
     }
-
     .tarjeta-atraccion h3 {
       margin: 0.8rem 0 1rem;
       font-size: 1rem;
       color: #1e3a8a;
     }
-
     .boton-boletos {
       display: inline-block;
       background-color: #10b981;
@@ -52,7 +48,6 @@
       font-weight: bold;
       margin-top: 1rem;
     }
-
     .boton-boletos:hover {
       background-color: #059669;
     }
@@ -61,7 +56,7 @@
 <body>
   <header>
     <div class="logo">
-      <img src="img/UMGLOGO.png" alt="Logo del Parque" />
+      <img src="img/umglogo.png" alt="Logo del Parque" />
       <h1>Don Samaco Park</h1>
     </div>
     <nav>
@@ -89,38 +84,13 @@
     <section id="atracciones" class="atracciones-section">
       <h2>Nuestras Atracciones</h2>
       <div class="carrusel-atracciones">
-        <div class="tarjeta-atraccion">
-          <img src="img/juego1.jpg" alt="Juego 1">
-          <h3>Rueda Divertida</h3>
-        </div>
-        <div class="tarjeta-atraccion">
-          <img src="img/juego2.jpg" alt="Juego 2">
-          <h3>Sillas Voladoras</h3>
-        </div>
-        <div class="tarjeta-atraccion">
-          <img src="img/juego3.jpg" alt="Juego 3">
-          <h3>Casa Embrujada</h3>
-        </div>
-        <div class="tarjeta-atraccion">
-          <img src="img/juego4.jpg" alt="Juego 4">
-          <h3>Trencito Aventura</h3>
-        </div>
-        <div class="tarjeta-atraccion">
-          <img src="img/juego5.jpg" alt="Juego 5">
-          <h3>Carrousel Gigante</h3>
-        </div>
-        <div class="tarjeta-atraccion">
-          <img src="img/juego6.jpg" alt="Juego 6">
-          <h3>Gran Rueda</h3>
-        </div>
-        <div class="tarjeta-atraccion">
-          <img src="img/juego7.jpg" alt="Juego 7">
-          <h3>Montaña Tornado</h3>
-        </div>
-        <div class="tarjeta-atraccion">
-          <img src="img/juego8.jpg" alt="Juego 8">
-          <h3>Parque Infantil</h3>
-        </div>
+        <div class="tarjeta-atraccion"><img src="img/juego2.jpg" alt="Juego 2"><h3>Sillas Voladoras</h3></div>
+        <div class="tarjeta-atraccion"><img src="img/juego3.jpg" alt="Juego 3"><h3>Casa Embrujada</h3></div>
+        <div class="tarjeta-atraccion"><img src="img/juego4.jpg" alt="Juego 4"><h3>Trencito Aventura</h3></div>
+        <div class="tarjeta-atraccion"><img src="img/juego5.jpg" alt="Juego 5"><h3>Carrousel Gigante</h3></div>
+        <div class="tarjeta-atraccion"><img src="img/juego6.jpg" alt="Juego 6"><h3>Gran Rueda</h3></div>
+        <div class="tarjeta-atraccion"><img src="img/juego7.jpg" alt="Juego 7"><h3>Montaña Tornado</h3></div>
+        <div class="tarjeta-atraccion"><img src="img/juego8.jpg" alt="Juego 8"><h3>Parque Infantil</h3></div>
       </div>
     </section>
 
@@ -150,12 +120,31 @@
 
     <section id="clima" class="clima-section">
       <h2>Clima en Don Samaco Park</h2>
-      <div class="clima-flex-container">
-        <div id="clima-actual"></div>
-        <div class="clima-box">
-          <div class="clima-hoy">☀️ Clima ahora: <span id="temp-hoy">--°</span></div>
-          <div class="clima-manana">🌤️ Mañana: <span id="temp-manana">--°</span></div>
-          <div class="clima-manana">🌥️ Pasado mañana: <span id="temp-pasadomanana">--°</span></div>
+      <div class="card">
+        <div class="landscape-section">
+          <div class="sky"></div>
+          <div class="sun"></div>
+          <div class="reflection"></div>
+          <div class="hill-1"></div>
+          <div class="hill-2"></div>
+          <div class="hill-3"></div>
+          <div class="tree-1"></div>
+          <div class="ocean"></div>
+          <div class="filter"></div>
+          <div class="weather-info">
+            <div class="left-side temperature" id="temperatura">--°C</div>
+            <div class="right-side">
+              <p id="descripcion">Cargando...</p>
+              <div class="location"><span>Guatemala</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="content-section">
+          <div class="forecast">
+            <div><span>Mañana</span><span id="dia1">--°C</span></div>
+            <div><span>Pasado</span><span id="dia2">--°C</span></div>
+            <div><span>Siguiente</span><span id="dia3">--°C</span></div>
+          </div>
         </div>
       </div>
       <div id="recomendacion" class="clima-recomendacion"></div>
