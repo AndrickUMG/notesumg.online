@@ -1,4 +1,3 @@
-<!-- index.html corregido: https://notesumg.online -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,6 +8,71 @@
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/clima.css" />
   <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      background-color: #e0f7fa;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #03a9f4;
+      padding: 1rem 2rem;
+      color: white;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo img {
+      width: 40px;
+      height: auto;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero-section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .cta-button {
+      background-color: #ffcc00;
+      color: #333;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .atracciones-section,
+    .eventos-section,
+    .hospedaje-section,
+    .tienda-section,
+    .clima-section,
+    .tickets-section,
+    .recuerdos-section {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
     .carrusel-atracciones {
       display: flex;
       overflow-x: auto;
@@ -17,6 +81,7 @@
       padding: 1rem;
       scroll-behavior: smooth;
     }
+
     .tarjeta-atraccion {
       flex: 0 0 auto;
       scroll-snap-align: start;
@@ -26,6 +91,7 @@
       width: 240px;
       text-align: center;
     }
+
     .tarjeta-atraccion img {
       width: 100%;
       height: 160px;
@@ -33,39 +99,76 @@
       border-top-left-radius: 12px;
       border-top-right-radius: 12px;
     }
+
     .tarjeta-atraccion h3 {
       margin: 0.8rem 0 1rem;
       font-size: 1rem;
       color: #1e3a8a;
     }
+
     .boton-boletos {
-      display: inline-block;
       background-color: #10b981;
       color: white;
       padding: 10px 20px;
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
-      margin-top: 1rem;
     }
+
     .boton-boletos:hover {
       background-color: #059669;
+    }
+
+    .recuerdos-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .producto {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      width: 180px;
+    }
+
+    .producto img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .producto h3 {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #1e3a8a;
+    }
+
+    footer {
+      background-color: #03a9f4;
+      color: white;
+      text-align: center;
+      padding: 1rem;
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">
-      <img src="img/umglogo.png" alt="Logo del Parque" />
+      <img src="img/UMGLOGO.png" alt="Logo del Parque" />
       <h1>Don Samaco Park</h1>
     </div>
     <nav>
-      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">☰</button>
-      <ul id="nav-list">
+      <ul>
         <li><a href="#atracciones">Atracciones</a></li>
         <li><a href="#eventos">Eventos</a></li>
         <li><a href="#hospedaje">Hospedaje</a></li>
         <li><a href="#tienda">Tienda</a></li>
+        <li><a href="#recuerdos">Recuerdos</a></li>
         <li><a href="#tickets">Tickets</a></li>
         <li><a href="#clima">Clima</a></li>
       </ul>
@@ -74,23 +177,19 @@
 
   <main>
     <section class="hero-section">
-      <div class="container">
-        <h1>Bienvenido a Don Samaco Park</h1>
-        <p>El mejor lugar para la diversión y la aventura familiar. ¡Descubre nuestras increíbles atracciones, eventos, opciones de hospedaje y tiendas!</p>
-        <a href="#atracciones" class="cta-button">Descubre la Aventura</a>
-      </div>
+      <h1>Bienvenido a Don Samaco Park</h1>
+      <p>El mejor lugar para la diversión y la aventura familiar. ¡Descubre nuestras increíbles atracciones, eventos, opciones de hospedaje y tiendas!</p>
+      <a href="#atracciones" class="cta-button">Descubre la Aventura</a>
     </section>
 
     <section id="atracciones" class="atracciones-section">
       <h2>Nuestras Atracciones</h2>
       <div class="carrusel-atracciones">
-        <div class="tarjeta-atraccion"><img src="img/juego2.jpg" alt="Juego 2"><h3>Sillas Voladoras</h3></div>
-        <div class="tarjeta-atraccion"><img src="img/juego3.jpg" alt="Juego 3"><h3>Casa Embrujada</h3></div>
-        <div class="tarjeta-atraccion"><img src="img/juego4.jpg" alt="Juego 4"><h3>Trencito Aventura</h3></div>
-        <div class="tarjeta-atraccion"><img src="img/juego5.jpg" alt="Juego 5"><h3>Carrousel Gigante</h3></div>
-        <div class="tarjeta-atraccion"><img src="img/juego6.jpg" alt="Juego 6"><h3>Gran Rueda</h3></div>
-        <div class="tarjeta-atraccion"><img src="img/juego7.jpg" alt="Juego 7"><h3>Montaña Tornado</h3></div>
-        <div class="tarjeta-atraccion"><img src="img/juego8.jpg" alt="Juego 8"><h3>Parque Infantil</h3></div>
+        <div class="tarjeta-atraccion"><img src="img/juego2.jpg" alt=""><h3>Sillas Voladoras</h3></div>
+        <div class="tarjeta-atraccion"><img src="img/juego3.jpg" alt=""><h3>Casa Embrujada</h3></div>
+        <div class="tarjeta-atraccion"><img src="img/juego4.jpg" alt=""><h3>Trencito Aventura</h3></div>
+        <div class="tarjeta-atraccion"><img src="img/juego5.jpg" alt=""><h3>Carrousel Gigante</h3></div>
+        <div class="tarjeta-atraccion"><img src="img/juego6.jpg" alt=""><h3>Gran Rueda</h3></div>
       </div>
     </section>
 
@@ -107,8 +206,6 @@
           <h3>Hotel El Tushe</h3>
           <p>Ubicado dentro del parque Don Samaco. Vive la experiencia completa con comodidad.</p>
           <a href="hotel_elTushe-main/index.html" class="cta-button">Ver Hotel</a>
-          <a href="hotel_elTushe-main/rooms.html" class="cta-button">Habitaciones</a>
-          <a href="hotel_elTushe-main/bb.html" class="cta-button">Reservar</a>
         </div>
       </div>
     </section>
@@ -118,35 +215,25 @@
       <p>Visita nuestras tiendas para encontrar el recuerdo perfecto.</p>
     </section>
 
+    <section id="recuerdos" class="recuerdos-section">
+      <h2>Productos en Venta</h2>
+      <div class="recuerdos-grid">
+        <div class="producto"><img src="img/recuerdo/camisa.jpg" alt=""><h3>Camisa</h3></div>
+        <div class="producto"><img src="img/recuerdo/gorra.jpg" alt=""><h3>Gorra</h3></div>
+        <div class="producto"><img src="img/recuerdo/iman.jpg" alt=""><h3>Imán</h3></div>
+        <div class="producto"><img src="img/recuerdo/llavero.jpg" alt=""><h3>Llavero</h3></div>
+        <div class="producto"><img src="img/recuerdo/pelota anti estres.jpg" alt=""><h3>Pelota Antiestrés</h3></div>
+        <div class="producto"><img src="img/recuerdo/peluche.jpg" alt=""><h3>Peluche</h3></div>
+        <div class="producto"><img src="img/recuerdo/postal.jpg" alt=""><h3>Postal</h3></div>
+        <div class="producto"><img src="img/recuerdo/pulseras.jpg" alt=""><h3>Pulseras</h3></div>
+        <div class="producto"><img src="img/recuerdo/stikercs.jpg" alt=""><h3>Stickers</h3></div>
+        <div class="producto"><img src="img/recuerdo/taza.jpg" alt=""><h3>Taza</h3></div>
+      </div>
+    </section>
+
     <section id="clima" class="clima-section">
       <h2>Clima en Don Samaco Park</h2>
-      <div class="card">
-        <div class="landscape-section">
-          <div class="sky"></div>
-          <div class="sun"></div>
-          <div class="reflection"></div>
-          <div class="hill-1"></div>
-          <div class="hill-2"></div>
-          <div class="hill-3"></div>
-          <div class="tree-1"></div>
-          <div class="ocean"></div>
-          <div class="filter"></div>
-          <div class="weather-info">
-            <div class="left-side temperature" id="temperatura">--°C</div>
-            <div class="right-side">
-              <p id="descripcion">Cargando...</p>
-              <div class="location"><span>Guatemala</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="content-section">
-          <div class="forecast">
-            <div><span>Mañana</span><span id="dia1">--°C</span></div>
-            <div><span>Pasado</span><span id="dia2">--°C</span></div>
-            <div><span>Siguiente</span><span id="dia3">--°C</span></div>
-          </div>
-        </div>
-      </div>
+      <div id="clima-actual"></div>
       <div id="recomendacion" class="clima-recomendacion"></div>
     </section>
 
