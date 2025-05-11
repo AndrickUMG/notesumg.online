@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIENVEMIDO A DON SAMACO PARK</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+    header {
+      background-color: #003366;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      color: #fff;
+      font-size: 2.5rem;
+    }
+    nav.menu {
+      margin-top: 1rem;
+    }
+    nav.menu ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+      gap: 1rem;
+    }
+    nav.menu ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    nav.menu ul li a:hover {
+      color: #FFCC33;
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      nav.menu ul {
+        display: none;
+        flex-direction: column;
+        background-color: #003366;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: 0.5rem;
+      }
+      nav.menu ul.show {
+        display: flex;
+      }
+    }
+    main {
+      padding: 2rem;
+      text-align: center;
+    }
+    .hero-section {
+      background-color: #fff;
+      padding: 3rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .hero-section h2 {
+      color: #003366;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .hero-section p {
+      color: #555;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    .cta-button {
+      background-color: #FFCC33;
+      padding: 1rem 2rem;
+      color: #000;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 1.2rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .cta-button:hover {
+      background-color: #FFB800;
+    }
+    footer {
+      background-color: #003366;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Don Samaco Park</h1>
+    <nav class="menu">
+      <button class="menu-toggle" onclick="document.querySelector('.menu ul').classList.toggle('show')">☰</button>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="atracciones.html">Atracciones</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="hospedaje.html">Hospedaje</a></li>
+        <li><a href="tienda.html">Tienda</a></li>
+        <li><a href="clima.html">Clima</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <h2>Bienvenido a Don Samaco Park</h2>
+      <p>El mejor lugar para la diversión y la aventura familiar. ¡Descubre nuestras increíbles atracciones, eventos, opciones de hospedaje y tiendas!</p>
+      <a href="atracciones.html" class="cta-button">Descubre la Aventura</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Don Samaco Park. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
