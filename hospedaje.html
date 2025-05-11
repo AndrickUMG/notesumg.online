@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel El Tushe - Don Samaco Parck</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2e0e9c6f2.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+
+    header {
+      background-color: #003366;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      color: white;
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    .logo {
+      width: 60px;
+      height: auto;
+      margin-top: 1rem;
+    }
+
+    nav.menu {
+      margin-top: 1rem;
+    }
+
+    nav.menu ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+      gap: 1rem;
+    }
+
+    nav.menu ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    nav.menu ul li a:hover {
+      color: #FFCC33;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav.menu ul {
+        display: none;
+        flex-direction: column;
+        background-color: #003366;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: 0.5rem;
+      }
+
+      nav.menu ul.show {
+        display: flex;
+      }
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    .hotel-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      margin-bottom: 2rem;
+    }
+
+    .reservation-box {
+      background-color: #FFFFFF;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 3rem;
+    }
+
+    .reservation-box h2 {
+      font-size: 2rem;
+      color: #003366;
+      margin-bottom: 1rem;
+    }
+
+    .reservation-box p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .reservation-box a {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background-color: #FFCC33;
+      color: #000;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .reservation-box a:hover {
+      background-color: #FFB800;
+    }
+
+    .amenities-section {
+      margin-top: 3rem;
+    }
+
+    .amenities-section h2 {
+      font-size: 1.8rem;
+      color: #003366;
+      margin-bottom: 2rem;
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .amenities-grid div {
+      background-color: #FFFFFF;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .amenities-grid div:hover {
+      transform: translateY(-5px);
+    }
+
+    .amenities-grid i {
+      font-size: 2.5rem;
+      color: #FFCC33;
+      margin-bottom: 1rem;
+    }
+
+    .amenities-grid h3 {
+      font-size: 1.2rem;
+      color: #003366;
+      margin-bottom: 0.5rem;
+    }
+
+    .amenities-grid p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+  
+    <h1>Don Samaco Parck</h1>
+    <nav class="menu">
+      <button class="menu-toggle" onclick="document.querySelector('.menu ul').classList.toggle('show')">☰</button>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="atracciones.html">Atracciones</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="hospedaje.html">Hospedaje</a></li>
+        <li><a href="tienda.html">Tienda</a></li>
+        <li><a href="clima.html">Clima</a></li>
+        <li><a href="tickets.html">Tickets</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <img src="img/hotel_el_tushe.png" alt="Hotel El Tushe" class="hotel-image">
+
+    <div class="reservation-box">
+      <h2>Hotel El Tushe</h2>
+      <p>
+        Descubre la magia de Don Samaco Parck en el Hotel El Tushe. Nuestro hotel ofrece una experiencia única con habitaciones de lujo,
+        excelentes servicios y una ubicación privilegiada. Perfecto para familias, parejas y viajeros que buscan una estancia inolvidable.
+      </p>
+      <a href="#">Reservar Ahora</a>
+    </div>
+
+    <section class="amenities-section">
+      <h2>Comodidades del Hotel</h2>
+      <div class="amenities-grid">
+        <div><i class="fas fa-swimming-pool"></i><h3>Piscina</h3><p>Disfruta de nuestra piscina al aire libre.</p></div>
+        <div><i class="fas fa-wifi"></i><h3>Wifi Gratuito</h3><p>Conexión a internet en todo el hotel.</p></div>
+        <div><i class="fas fa-utensils"></i><h3>Restaurante</h3><p>Deléitate con nuestra cocina gourmet.</p></div>
+        <div><i class="fas fa-parking"></i><h3>Estacionamiento</h3><p>Parqueo gratuito para nuestros huéspedes.</p></div>
+        <div><i class="fas fa-spa"></i><h3>Spa</h3><p>Relájate en nuestro spa de servicio completo.</p></div>
+        <div><i class="fas fa-dumbbell"></i><h3>Gimnasio</h3><p>Mantente en forma en nuestro gimnasio.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Don Samaco Parck. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
