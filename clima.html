@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima - Don Samaco Park</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background: linear-gradient(to top, #003366, #336699);
+        }
+
+        #videoFondo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        header {
+            background-color: rgba(0, 51, 102, 0.8);
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        nav.menu ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0;
+            margin: 1rem 0 0 0;
+        }
+
+        nav.menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .clima-actual img {
+            width: 100px;
+        }
+
+        .clima-actual {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .temperatura {
+            font-size: 4rem;
+            margin: 1rem 0;
+        }
+
+        .descripcion {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .pronostico {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .dia {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .dia img {
+            width: 60px;
+        }
+
+        footer {
+            background-color: rgba(0, 51, 102, 0.8);
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop id="videoFondo">
+        <source src="img/background.mp4" type="video/mp4">
+        Tu navegador no soporta videos HTML5.
+    </video>
+
+    <header>
+        <h1>Don Samaco Park</h1>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="atracciones.html">Atracciones</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="hospedaje.html">Hospedaje</a></li>
+                <li><a href="tienda.html">Tienda</a></li>
+                <li><a href="clima.html">Clima</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="clima-actual">
+            <h2 id="fecha">Hoy</h2>
+            <img src="img/placeholder.png" alt="Clima actual" id="icono-actual">
+            <div class="temperatura" id="temp-actual">--°</div>
+            <div id="descripcion-actual">Cargando...</div>
+            <div id="viento-actual"></div>
+        </div>
+
+        <div class="pronostico" id="pronostico">
+            <!-- Se llena con JS -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Don Samaco Park. Datos en tiempo real de WeatherAPI.</p>
+    </footer>
+
+    <script>
+        const apiKey = '8c4c4d975ff84d588ab00943251205';
+        const ciudad = 'Zacapa';
+
+        fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${ciudad}&days=3&lang=es`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('temp-actual').innerHTML = `${data.current.temp_c}°`;
+                document.getElementById('icono-actual').src = `https:${data.current.condition.icon}`;
+                document.getElementById('descripcion-actual').innerText = data.current.condition.text;
+                document.getElementById('viento-actual').innerText = `🌬 ${data.current.wind_kph} km/h ${data.current.wind_dir}`;
+
+                const pronosticoDiv = document.getElementById('pronostico');
+                data.forecast.forecastday.forEach(dia => {
+                    pronosticoDiv.innerHTML += `
+                        <div class="dia">
+                            <h3>${dia.date}</h3>
+                            <img src="https:${dia.day.condition.icon}" alt="icono">
+                            <p>${dia.day.condition.text}</p>
+                            <p>🌡 Máx: ${dia.day.maxtemp_c}° / Mín: ${dia.day.mintemp_c}°</p>
+                            <p>💨 ${dia.day.maxwind_kph} km/h</p>
+                        </div>
+                    `;
+                });
+            })
+            .catch(err => console.error('Error al obtener datos del clima:', err));
+    </script>
+</body>
+</html>
